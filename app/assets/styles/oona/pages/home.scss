@@ -3,6 +3,14 @@
 
     .intro {
         height: 100vh;
+        background-image: url('/images/main.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .intro-text {
+        font-weight: 400;
     }
 
     .services {
@@ -27,6 +35,14 @@
         @media #{$small-and-down} {
             text-align: center;
         }
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .normal {
+        font-style: normal;
     }
 
     .no-underline:hover ~ a {

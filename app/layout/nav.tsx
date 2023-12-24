@@ -13,7 +13,7 @@ export default function Nav() {
             <div className="row">
               <div className="col s12 l6">
                 <a href="/" className={oona['current-page']}>
-                  Oona
+                  Advertum
                 </a>
                 <span className="right show-on-medium-and-down hide-on-large-only">
                   <a href="#"
@@ -23,7 +23,7 @@ export default function Nav() {
               </div>
               <div className="col s12 l6">
                 <ul className="hidden hide-on-med-and-down">
-                  <li><a href="/icons">Work</a></li>
+                  <li><a href="/work">Work</a></li>
                   <li><a href="/prices">Prices</a></li>
                   <li><a href="/about">About</a></li>
                   <li><a href="/journal">Journal</a></li>

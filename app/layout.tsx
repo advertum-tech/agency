@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type {Metadata} from 'next'
 import {Inter, Roboto_Mono} from 'next/font/google'
 import cn from 'classnames';
 import './assets/styles/globals.css'
@@ -25,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
     <body className={cn(robotoMono.className, oona['page-home'])}>
     <Nav/>
-    {children}
+    <main id="main">
+      {children}
+    </main>
     <Footer/>
     </body>
     </html>
