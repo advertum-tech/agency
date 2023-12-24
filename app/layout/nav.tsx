@@ -10,7 +10,7 @@ export default function Nav() {
       <div className={cn('navbar-fixed', oona['navbar-fixed'])}>
         <nav>
           <div className="nav-wrapper">
-            <div className={cn(oona['container'], 'container')}>
+            <div className={cn(oona['container-override'], 'container')}>
               <div className="row">
                 <div className="col s12 l6">
                   <a href="/" className={oona['current-page']}>
