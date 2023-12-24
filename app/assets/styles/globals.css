@@ -1,0 +1,62 @@
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+/*:root {*/
+/*  --foreground-rgb: 0, 0, 0;*/
+/*  --background-start-rgb: 214, 219, 220;*/
+/*  --background-end-rgb: 255, 255, 255;*/
+/*}*/
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --foreground-rgb: 255, 255, 255;*/
+/*    --background-start-rgb: 0, 0, 0;*/
+/*    --background-end-rgb: 0, 0, 0;*/
+/*  }*/
+/*}*/
+
+/*body {*/
+/*  color: rgb(var(--foreground-rgb));*/
+/*  background: linear-gradient(*/
+/*      to bottom,*/
+/*      transparent,*/
+/*      rgb(var(--background-end-rgb))*/
+/*    )*/
+/*    rgb(var(--background-start-rgb));*/
+/*}*/
+
+
+/* GLOBALS FROM OONA global.scss */
+html {
+    font-family: "Roboto Mono", monospace;
+}
+
+body {
+    -webkit-transition: background 0.4s ease;
+    -moz-transition: background 0.4s ease;
+    -spec-transition: background 0.4s ease;
+    transition: background 0.4s ease;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -moz-font-feature-settings: "liga", "kern";
+}
+
+@media only screen and (max-width: 600px) {
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+/*iframe {*/
+/*  border: 0;*/
+/*}*/
