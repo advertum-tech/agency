@@ -44,25 +44,25 @@ section.section {
   }
 }
 
-.container-override {
-  width: 90%;
-  max-width: 1600px;
+.container {
+  width: 90% !important;
+  max-width: 1600px !important;
 
   @media #{$medium-and-up} {
-    width: $container-width;
+    width: $container-width !important;
   }
 
   @media #{$large-and-up} {
-    width: $container-width;
+    width: $container-width !important;
   }
 
   &.full-width {
-    width: 100%;
+    width: 100% !important;
   }
 
   &.row.narrow-row {
-    margin-right: 0;
-    margin-left: 0;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
