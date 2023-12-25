@@ -1,6 +1,10 @@
 .page-work {
   @include page-colors(color('grey', 'darken-3'), color('grey', 'lighten-5'));
 
+  .intro-text {
+    font-weight: 400 !important;
+  }
+
   .no-underline:hover + a {
     border-bottom-color: transparentize(color('grey', 'darken-3'), .5);
   }

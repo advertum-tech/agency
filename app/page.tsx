@@ -1,6 +1,7 @@
 "use client";
 import cn from "classnames";
 import oona from './assets/styles/oona/oona.module.scss'
+// import Image from 'next/image'
 
 export default function Home() {
   return (
