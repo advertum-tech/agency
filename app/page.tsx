@@ -9,7 +9,7 @@ export default function Home() {
       <div className={cn(oona['container'], oona['intro'], 'container intro')}>
         <div className={cn('row')}>
           <div className="col s12 l6 offset-l6">
-            <p className={cn(oona['intro-text'], 'flow-text intro-text')}>
+            <p className={cn('flow-text intro-text', oona['intro-text'])}>
               Advertum is a cutting edge design and development studio that exists to create challenging and engaging
               visual concepts.
             </p>
