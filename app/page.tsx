@@ -6,7 +6,7 @@ import oona from './assets/styles/oona/oona.module.scss'
 export default function Home() {
   return (
     <>
-      <div className={cn(oona['container'], oona['intro'], 'container intro')}>
+      <div className={cn('container intro', oona['container'], oona['intro'])}>
         <div className={cn('row')}>
           <div className="col s12 l6 offset-l6">
             <p className={cn('flow-text intro-text', oona['intro-text'])}>
@@ -19,8 +19,8 @@ export default function Home() {
 
       {/*<div id="curves" className="hero"></div>*/}
 
-      <div className={cn(oona['container'], 'container')}>
-        <section className={cn(oona['section'], oona['latest-projects'], 'latest-projects')}>
+      <div className={cn('container', oona['container'])}>
+        <section className={cn('latest-projects', oona['section'], oona['latest-projects'])}>
           <div className="row">
             <div className="col s12">
               <h2>Latest projects</h2>
@@ -31,13 +31,13 @@ export default function Home() {
               <a href="/work/clip-finance" className={cn(oona['no-underline'])}>
                 <img src="/images/work/clip/clip.webp" alt="Clip Finance" className="responsive-img"/>
               </a>
-              <a href="/work/clip-finance" className={cn(oona['flow-text'], 'flow-text')}>Clip Finance</a>
+              <a href="/work/clip-finance" className={cn('flow-text', oona['flow-text'])}>Clip Finance</a>
             </div>
             <div className="col s12 l6">
               <a href="/work/advertum-cashback" className={cn(oona['no-underline'])}>
                 <img src="/images/work/advertum/advertum.webp" alt="Advertum Cashback" className="responsive-img"/>
               </a>
-              <a href="/work/advertum-cashback" className={cn(oona['flow-text'], 'flow-text')}>Advertum Cashback</a>
+              <a href="/work/advertum-cashback" className={cn('flow-text', oona['flow-text'])}>Advertum Cashback</a>
             </div>
           </div>
         </section>
@@ -50,7 +50,7 @@ export default function Home() {
           </div>
           <div className="row">
             <div className="col s12 l6 margin-on-medium-and-down">
-              <i className="icon-basic-cloud"></i><span className={cn(oona['flow-text'], 'flow-text')}>Web2 cloud solutions</span>
+              <i className="icon-basic-cloud"></i><span className={cn('flow-text', oona['flow-text'])}>Web2 cloud solutions</span>
             </div>
             <div className="col s12 l6">
               <i className="icon-basic-star"></i><span
@@ -59,19 +59,19 @@ export default function Home() {
           </div>
           <div className="row">
             <div className="col s12 l6 margin-on-medium-and-down">
-              <i className="icon-basic-server2"></i><span className={cn(oona['flow-text'], 'flow-text')}>Data, Bigdata, Microservices</span>
+              <i className="icon-basic-server2"></i><span className={cn('flow-text', oona['flow-text'])}>Data, Bigdata, Microservices</span>
             </div>
             <div className="col s12 l6">
               <i className="icon-basic-elaboration-browser-star"></i><span
-              className={cn(oona['flow-text'], 'flow-text')}>Web Design & UI/UX</span>
+              className={cn('flow-text', oona['flow-text'])}>Web Design & UI/UX</span>
             </div>
           </div>
           <div className="row">
             <div className="col s12 l6 margin-on-medium-and-down">
-              <i className="icon-weather-lightning"></i><span className={cn(oona['flow-text'], 'flow-text')}>Performance optimizations</span>
+              <i className="icon-weather-lightning"></i><span className={cn('flow-text', oona['flow-text'])}>Performance optimizations</span>
             </div>
             <div className="col s12 l6">
-              <i className="icon-basic-heart"></i><span className={cn(oona['flow-text'], 'flow-text')}>A lot of passion to make your users happy</span>
+              <i className="icon-basic-heart"></i><span className={cn('flow-text', oona['flow-text'])}>A lot of passion to make your users happy</span>
             </div>
           </div>
         </section>
@@ -91,7 +91,7 @@ export default function Home() {
               <div className="meta">
                 <time dateTime="2022-08-01T21:00">08/01/2022</time>
                 <span>&nbsp;by Daniil</span></div>
-              <a href="#" className={cn(oona['flow-text'], 'flow-text')}>Marketing and Illustration</a>
+              <a href="#" className={cn('flow-text', oona['flow-text'])}>Marketing and Illustration</a>
             </div>
             <div className="col s12 l6">
               <a href="#/blog/2023-successful-cases" className={cn(oona['no-underline'])}>
@@ -100,7 +100,7 @@ export default function Home() {
               <div className="meta">
                 <time dateTime="2023-12-15T21:00">12/12/2023</time>
                 <span>&nbsp;by Nikolai</span></div>
-              <a href="#" className={cn(oona['flow-text'], 'flow-text')}>2023: Successful Cases</a>
+              <a href="#" className={cn('flow-text', oona['flow-text'])}>2023: Successful Cases</a>
             </div>
           </div>
         </section>
@@ -113,7 +113,7 @@ export default function Home() {
           </div>
           <div className="row">
             <div className="col s12 l6">
-              <p className={cn(oona['flow-text'], 'flow-text')}>
+              <p className={cn('flow-text', oona['flow-text'])}>
                 Whether you like to start a new project, discuss a brilliant investment idea
                 or just have a small-talk chat, feel free to <a href="/contact" className="ajax-link">contact us</a>.
               </p>
