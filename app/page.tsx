@@ -31,7 +31,7 @@ export default function Home() {
               <a href="/work/clip-finance" className={cn(oona['no-underline'])}>
                 <img src="/images/work/clip/clip.webp" alt="Clip Finance" className="responsive-img"/>
               </a>
-              <a href="/work/clip-finance" className={cn('flow-text', oona['flow-text'])}>Clip Finance</a>
+              <a href="/work/clip-finance" className={cn('flow-text', oona['item-title'])}>Clip Finance</a>
             </div>
             <div className="col s12 l6">
               <a href="/work/advertum-cashback" className={cn(oona['no-underline'])}>
