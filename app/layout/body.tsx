@@ -13,7 +13,7 @@ export default function Body({children}: { children: React.ReactNode }) {
   const pageClass = pathname === '/work' ? 'page-work' : 'page-home';
 
   return (
-    <body className={cn(robotoMono.className, oona[pageClass])}>
+    <body className={cn(robotoMono.className, oona[pageClass], 'bg-accentBackground')}>
     {children}
     </body>
   )

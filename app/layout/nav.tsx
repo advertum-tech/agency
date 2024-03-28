@@ -2,19 +2,21 @@
 import oona from '../assets/styles/oona/oona.module.scss'
 import cn from "classnames";
 import {useState} from "react";
+import ResponsiveUtility from "@/app/layout/ResponsiveUtility";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   return (
     <div className={cn('navbar-fixed', oona['navbar-fixed'])}>
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper bg-accentBackground">
           <div className={cn(oona['container'], 'container')}>
             <div className="row">
               <div className="col s12 l6">
                 <a href="/" className={oona['current-page']}>
                   Advertum
                 </a>
+                {/*<ResponsiveUtility />*/}
                 <span className="right show-on-medium-and-down hide-on-large-only">
                     <a href="#"
                        onClick={() => setOpen(!open)}
@@ -22,7 +24,7 @@ export default function Nav() {
                   </span>
               </div>
               <div className="col s12 l6">
-                <ul className="hidden hide-on-med-and-down">
+                <ul className=" hide-on-med-and-down">
                   <li><a href="/work">Work</a></li>
                   <li><a href="/prices">Prices</a></li>
                   <li><a href="/about">About</a></li>

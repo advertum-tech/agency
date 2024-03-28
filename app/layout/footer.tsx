@@ -3,7 +3,7 @@ import cn from "classnames";
 
 export default function Footer() {
   return (
-    <footer className={oona['footer']}>
+    <footer className={cn(oona['footer'], 'bg-white text-main')}>
       <div className={cn('container', oona['container'])}>
 
         <div className="row">
