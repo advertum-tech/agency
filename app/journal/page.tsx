@@ -133,12 +133,17 @@ export default function Journal() {
                 <time dateTime="2026-02-01">02/2026</time>
                 <span>
                   &nbsp;·{" "}
-                  {lang === "ru" ? "Мнение · Лонгрид" : "Opinion · Long Read"}
+                  {lang === "ru" ? "Пост-работа · Манифест" : "Post-work · Manifesto"}
                 </span>
               </div>
               <a href="/great-displacement" className={cn("flow-text", oona["item-title"])}>
                 {lang === "ru" ? "Великое вытеснение" : "The Great Displacement"}
               </a>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                {lang === "ru"
+                  ? "ИИ обесценивает умственный труд быстрее, чем мы успеваем переучиться. Самым дефицитным ресурсом станут руки, а не головы."
+                  : "AI is devaluing cognitive labor faster than we can retrain. The scarcest resource will be hands, not minds."}
+              </p>
             </div>
             <div className="col s12 l6">
               <a href="/harness-engineering" className={cn(oona["no-underline"])}>
@@ -149,13 +154,18 @@ export default function Journal() {
                 <span>
                   &nbsp;·{" "}
                   {lang === "ru"
-                    ? "Инженерия · Перевод"
-                    : "Engineering · Translation"}
+                    ? "ИИ-агенты · Ноль вручную"
+                    : "AI Agents · Zero Hand-written"}
                 </span>
               </div>
               <a href="/harness-engineering" className={cn("flow-text", oona["item-title"])}>
                 {lang === "ru" ? "Harness-инженерия" : "Harness Engineering"}
               </a>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                {lang === "ru"
+                  ? "Три инженера, Codex и миллион строк кода — ни одной написанной вручную. OpenAI показала, как выглядит разработка, когда агенты делают всю работу."
+                  : "Three engineers, Codex, and a million lines of code — none written by hand. OpenAI showed what development looks like when agents do all the heavy lifting."}
+              </p>
             </div>
           </div>
         </section>
