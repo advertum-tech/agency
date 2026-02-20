@@ -15,7 +15,7 @@ export default function Nav() {
               <div className="col s12 l6">
                 <a href="/" className={oona['current-page']}>
                   <img
-                    src="/images/advertum.webp"
+                    src="/images/advertum-mobile.webp"
                     alt=""
                     width={48}
                     height={48}
