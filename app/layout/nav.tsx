@@ -14,6 +14,13 @@ export default function Nav() {
             <div className="row">
               <div className="col s12 l6">
                 <a href="/" className={oona['current-page']}>
+                  <img
+                    src="/images/advertum.webp"
+                    alt=""
+                    width={28}
+                    height={28}
+                    style={{ objectFit: 'contain', flexShrink: 0 }}
+                  />
                   Advertum
                 </a>
                 {/*<ResponsiveUtility />*/}
