@@ -73,5 +73,10 @@
     display: inline-flex !important;
     align-items: center;
     gap: 0.45rem;
+    border-bottom: none !important;
+
+    &:hover {
+      border-bottom: none !important;
+    }
   }
 }

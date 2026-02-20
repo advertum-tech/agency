@@ -17,8 +17,8 @@ export default function Nav() {
                   <img
                     src="/images/advertum.webp"
                     alt=""
-                    width={28}
-                    height={28}
+                    width={48}
+                    height={48}
                     style={{ objectFit: 'contain', flexShrink: 0 }}
                   />
                   Advertum
