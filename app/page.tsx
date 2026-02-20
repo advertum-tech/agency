@@ -97,31 +97,94 @@ export default function Home() {
 
         <div className={'bg-white text-main'}>
           <div className={cn('container', oona['container'])}>
-            <section className={cn(oona['section'], oona['blog-posts'], oona['blog-posts'])}>
+            <section className={cn(oona['section'], oona['blog-posts'])}>
               <div className="row">
                 <div className="col s12">
-                  <h2 className={'tracking-tight'}>Advertum Blog</h2>
+                  <h2 className={'tracking-tight'}>Journal</h2>
                 </div>
               </div>
               <div className="row">
                 <div className="col s12 l6 margin-on-medium-and-down">
-                  <a href="/blog/the-crucial-role-of-modern-and-striking-illustrations-in-it-product-marketing"
-                     className={cn(oona['no-underline'])}>
-                    <img src="/images/blog/bicycle.jpg" alt="Marketing and Illustration" className={'responsive-img rounded-3xl'}/>
+                  <a href="/great-displacement" className={cn(oona['no-underline'])}>
+                    <svg viewBox="0 0 680 400" className="responsive-img rounded-3xl" style={{background: '#f8f8f8'}}>
+                      {/* Grid */}
+                      {[...Array(12)].map((_, i) => (
+                        <line key={`v${i}`} x1={60 * i} y1="0" x2={60 * i} y2="400" stroke="#e5e5e5" strokeWidth="0.5" />
+                      ))}
+                      {[...Array(8)].map((_, i) => (
+                        <line key={`h${i}`} x1="0" y1={50 * i} x2="680" y2={50 * i} stroke="#e5e5e5" strokeWidth="0.5" />
+                      ))}
+                      {/* Displacement curve */}
+                      <path d="M40 320 Q120 310 180 280 Q240 250 300 180 Q360 110 420 70 Q480 30 560 20 Q600 15 640 12" fill="none" stroke="#1a1a1a" strokeWidth="2" />
+                      <path d="M40 320 Q120 315 180 300 Q240 285 300 260 Q360 230 420 200 Q480 170 560 150 Q600 140 640 135" fill="none" stroke="#999" strokeWidth="1.5" strokeDasharray="6 4" />
+                      {/* Nodes on curve */}
+                      {[[180, 280], [300, 180], [420, 70], [560, 20]].map(([cx, cy], i) => (
+                        <g key={`n${i}`}>
+                          <circle cx={cx} cy={cy} r="5" fill="#1a1a1a" />
+                          <circle cx={cx} cy={cy} r="12" fill="none" stroke="#1a1a1a" strokeWidth="0.8" />
+                        </g>
+                      ))}
+                      {/* Vertical drop lines */}
+                      {[[300, 180, 260], [420, 70, 200]].map(([x, y1, y2], i) => (
+                        <line key={`d${i}`} x1={x} y1={y1} x2={x} y2={y2} stroke="#c00" strokeWidth="1" strokeDasharray="3 3" />
+                      ))}
+                      {/* Labels */}
+                      <text x="50" y="30" fontSize="13" fontFamily="monospace" fill="#999">cognitive labor → cheap</text>
+                      <text x="400" y="380" fontSize="13" fontFamily="monospace" fill="#999">physical labor → scarce</text>
+                    </svg>
                   </a>
                   <div className="meta">
-                    <time dateTime="2022-08-01T21:00">08/01/2022</time>
-                    <span>&nbsp;by Daniil</span></div>
-                  <a href="#" className={cn('flow-text', oona['item-title'])}>Marketing and Illustration</a>
+                    <time dateTime="2026-02-01">02/2026</time>
+                    <span>&nbsp;· Мнение · Лонгрид</span>
+                  </div>
+                  <a href="/great-displacement" className={cn('flow-text', oona['item-title'])}>Великое вытеснение</a>
                 </div>
                 <div className="col s12 l6">
-                  <a href="#/blog/2023-successful-cases" className={cn(oona['no-underline'])}>
-                    <img src="/images/blog/mountain.jpg" alt="2023-successful-cases" className={'responsive-img rounded-3xl'}/>
+                  <a href="/harness-engineering" className={cn(oona['no-underline'])}>
+                    <svg viewBox="0 0 680 400" className="responsive-img rounded-3xl" style={{background: '#f8f8f8'}}>
+                      {/* Grid */}
+                      {[...Array(12)].map((_, i) => (
+                        <line key={`v${i}`} x1={60 * i} y1="0" x2={60 * i} y2="400" stroke="#e5e5e5" strokeWidth="0.5" />
+                      ))}
+                      {[...Array(8)].map((_, i) => (
+                        <line key={`h${i}`} x1="0" y1={50 * i} x2="680" y2={50 * i} stroke="#e5e5e5" strokeWidth="0.5" />
+                      ))}
+                      {/* Architecture layers */}
+                      {['Types', 'Config', 'Repo', 'Service', 'Runtime', 'UI'].map((label, i) => {
+                        const x = 80 + i * 90;
+                        const y = 160;
+                        return (
+                          <g key={label}>
+                            <rect x={x} y={y} width="72" height="32" rx="4" fill="none" stroke="#1a1a1a" strokeWidth="1.5" />
+                            <text x={x + 36} y={y + 20} fontSize="10" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle">{label}</text>
+                            {i < 5 && <line x1={x + 72} y1={y + 16} x2={x + 90} y2={y + 16} stroke="#1a1a1a" strokeWidth="1" markerEnd="url(#arrow)" />}
+                          </g>
+                        );
+                      })}
+                      <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1a1a" /></marker></defs>
+                      {/* Providers bracket */}
+                      <rect x="80" y="240" width="612" height="28" rx="4" fill="none" stroke="#999" strokeWidth="1" strokeDasharray="4 3" />
+                      <text x="340" y="258" fontSize="10" fontFamily="monospace" fill="#999" textAnchor="middle">Providers (auth, telemetry, connectors, feature flags)</text>
+                      {/* Agent loop */}
+                      <circle cx="340" cy="70" r="28" fill="none" stroke="#1a1a1a" strokeWidth="1.5" />
+                      <text x="340" y="74" fontSize="10" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle">Codex</text>
+                      {/* Connections from agent to layers */}
+                      {[170, 260, 350, 440, 530].map((x, i) => (
+                        <line key={`c${i}`} x1="340" y1="98" x2={x} y2="160" stroke="#ddd" strokeWidth="0.8" />
+                      ))}
+                      {/* Feedback loop */}
+                      <path d="M380 70 Q500 40 560 70 Q620 100 600 130 Q580 155 530 155" fill="none" stroke="#c00" strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#arrow)" />
+                      <text x="580" y="90" fontSize="9" fontFamily="monospace" fill="#c00">feedback</text>
+                      {/* Stats */}
+                      <text x="50" y="340" fontSize="11" fontFamily="monospace" fill="#999">1M loc · 1500 PRs · 3 engineers</text>
+                      <text x="420" y="340" fontSize="11" fontFamily="monospace" fill="#999">0 lines hand-written</text>
+                    </svg>
                   </a>
                   <div className="meta">
-                    <time dateTime="2023-12-15T21:00">12/12/2023</time>
-                    <span>&nbsp;by Nikolai</span></div>
-                  <a href="#" className={cn('flow-text', oona['item-title'])}>2023: Successful Cases</a>
+                    <time dateTime="2026-02-11">02/2026</time>
+                    <span>&nbsp;· Инженерия · Перевод</span>
+                  </div>
+                  <a href="/harness-engineering" className={cn('flow-text', oona['item-title'])}>Harness-инженерия</a>
                 </div>
               </div>
             </section>
