@@ -1364,7 +1364,7 @@ function EnBody() {
 }
 
 export default function ArticleContent() {
-  const [lang, setLang] = useState<"ru" | "en">("ru");
+  const [lang, setLang] = useState<"ru" | "en">("en");
 
   return (
     <article className="bg-white text-main">
