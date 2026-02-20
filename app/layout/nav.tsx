@@ -26,13 +26,11 @@ export default function Nav() {
               <div className="col s12 l6">
                 <ul className=" hide-on-med-and-down">
                   <li><a href="/work">Work</a></li>
-                  <li><a href="/about">About</a></li>
                   <li><a href="/journal">Journal</a></li>
                 </ul>
                 {open && <div onClick={() => setOpen(false)} className={oona['side-nav-overlay']}></div>}
                 <ul className={cn('side-nav', oona['side-nav'], open && oona['side-nav-open'])}>
                   <li><a href="/work">Work</a></li>
-                  <li><a href="/about">About</a></li>
                   <li><a href="/journal">Journal</a></li>
                 </ul>
               </div>
