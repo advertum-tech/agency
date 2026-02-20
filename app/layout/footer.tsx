@@ -24,7 +24,7 @@ export default function Footer() {
             <a href="https://t.me/advertumofficial" target="_blank">Follow @advertumofficial</a>
           </div>
           <div className="col s12 l3">
-            &copy; 2021 - 2023 <a href="https://www.teatmik.ee/et/personlegal/16351919-Advertum-Tech-O%C3%9C"
+            &copy; 2009 - {new Date().getFullYear()} <a href="https://www.teatmik.ee/et/personlegal/16351919-Advertum-Tech-O%C3%9C"
                                   target="_blank">Advertum Tech OÜ</a>
           </div>
         </div>

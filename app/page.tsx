@@ -32,71 +32,6 @@ export default function Home() {
 
         <div className={'bg-white text-main'}>
           <div className={cn('container', oona['container'])}>
-            <section className={cn('latest-projects', oona['section'], oona['latest-projects'])}>
-              <div className="row">
-                <div className="col s12">
-                  <h2 className={'tracking-tight'}>Latest projects</h2>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col s12 l6 margin-on-medium-and-down">
-                  <a href="/work/clip-finance" className={cn(oona['no-underline'], '')}>
-                    <img src="/images/work/clip/clip.webp" alt="Clip Finance" className={'responsive-img rounded-3xl'}/>
-                  </a>
-                  <a href="/work/clip-finance" className={cn('flow-text', oona['item-title'])}>Clip Finance</a>
-                </div>
-                <div className="col s12 l6">
-                  <a href="/work/advertum-cashback" className={cn(oona['no-underline'])}>
-                    <img src="/images/work/advertum/advertum.webp" alt="Advertum Cashback" className={'responsive-img rounded-3xl'}/>
-                  </a>
-                  <a href="/work/advertum-cashback" className={cn('flow-text', oona['item-title'])}>Advertum
-                    Cashback</a>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-
-        <div className={'text-main'}>
-          <div className={cn('container', oona['container'])}>
-            <section className={cn(oona['section'], oona['services'])}>
-              <div className="row">
-                <div className="col s12">
-                  <h2 className={'tracking-tight'}>Our services</h2>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col s12 l6 margin-on-medium-and-down">
-                  <i className="icon-basic-cloud"></i><span className={cn('flow-text', oona['item-title'])}>Web2 cloud solutions</span>
-                </div>
-                <div className="col s12 l6">
-                  <i className="icon-basic-star"></i><span
-                    className={cn(oona['item-title'], 'flow-text')}>Visual Identity</span>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col s12 l6 margin-on-medium-and-down">
-                  <i className="icon-basic-server2"></i><span className={cn('flow-text', oona['item-title'])}>Data, Bigdata, Microservices</span>
-                </div>
-                <div className="col s12 l6">
-                  <i className="icon-basic-elaboration-browser-star"></i><span
-                    className={cn('flow-text', oona['item-title'])}>Web Design & UI/UX</span>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col s12 l6 margin-on-medium-and-down">
-                  <i className="icon-weather-lightning"></i><span className={cn('flow-text', oona['item-title'])}>Performance optimizations</span>
-                </div>
-                <div className="col s12 l6">
-                  <i className="icon-basic-heart"></i><span className={cn('flow-text', oona['item-title'])}>A lot of passion to make your users happy</span>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-
-        <div className={'bg-white text-main'}>
-          <div className={cn('container', oona['container'])}>
             <section className={cn(oona['section'], oona['blog-posts'])}>
               <div className="row">
                 <div className="col s12">
@@ -185,6 +120,71 @@ export default function Home() {
                     <span>&nbsp;· Инженерия · Перевод</span>
                   </div>
                   <a href="/harness-engineering" className={cn('flow-text', oona['item-title'])}>Harness-инженерия</a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div className={'bg-white text-main'}>
+          <div className={cn('container', oona['container'])}>
+            <section className={cn('latest-projects', oona['section'], oona['latest-projects'])}>
+              <div className="row">
+                <div className="col s12">
+                  <h2 className={'tracking-tight'}>Latest projects</h2>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col s12 l6 margin-on-medium-and-down">
+                  <a href="/work/clip-finance" className={cn(oona['no-underline'], '')}>
+                    <img src="/images/work/clip/clip.webp" alt="Clip Finance" className={'responsive-img rounded-3xl'}/>
+                  </a>
+                  <a href="/work/clip-finance" className={cn('flow-text', oona['item-title'])}>Clip Finance</a>
+                </div>
+                <div className="col s12 l6">
+                  <a href="/work/advertum-cashback" className={cn(oona['no-underline'])}>
+                    <img src="/images/work/advertum/advertum.webp" alt="Advertum Cashback" className={'responsive-img rounded-3xl'}/>
+                  </a>
+                  <a href="/work/advertum-cashback" className={cn('flow-text', oona['item-title'])}>Advertum
+                    Cashback</a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div className={'text-main'}>
+          <div className={cn('container', oona['container'])}>
+            <section className={cn(oona['section'], oona['services'])}>
+              <div className="row">
+                <div className="col s12">
+                  <h2 className={'tracking-tight'}>Our services</h2>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col s12 l6 margin-on-medium-and-down">
+                  <i className="icon-basic-cloud"></i><span className={cn('flow-text', oona['item-title'])}>Web2 cloud solutions</span>
+                </div>
+                <div className="col s12 l6">
+                  <i className="icon-basic-star"></i><span
+                    className={cn(oona['item-title'], 'flow-text')}>Visual Identity</span>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col s12 l6 margin-on-medium-and-down">
+                  <i className="icon-basic-server2"></i><span className={cn('flow-text', oona['item-title'])}>Data, Bigdata, Microservices</span>
+                </div>
+                <div className="col s12 l6">
+                  <i className="icon-basic-elaboration-browser-star"></i><span
+                    className={cn('flow-text', oona['item-title'])}>Web Design & UI/UX</span>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col s12 l6 margin-on-medium-and-down">
+                  <i className="icon-weather-lightning"></i><span className={cn('flow-text', oona['item-title'])}>Performance optimizations</span>
+                </div>
+                <div className="col s12 l6">
+                  <i className="icon-basic-heart"></i><span className={cn('flow-text', oona['item-title'])}>A lot of passion to make your users happy</span>
                 </div>
               </div>
             </section>

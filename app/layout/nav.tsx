@@ -28,14 +28,12 @@ export default function Nav() {
                   <li><a href="/work">Work</a></li>
                   <li><a href="/about">About</a></li>
                   <li><a href="/journal">Journal</a></li>
-                  <li><a href="/contact">Contact</a></li>
                 </ul>
                 {open && <div onClick={() => setOpen(false)} className={oona['side-nav-overlay']}></div>}
                 <ul className={cn('side-nav', oona['side-nav'], open && oona['side-nav-open'])}>
                   <li><a href="/work">Work</a></li>
                   <li><a href="/about">About</a></li>
                   <li><a href="/journal">Journal</a></li>
-                  <li><a href="/contact">Contact</a></li>
                 </ul>
               </div>
             </div>
