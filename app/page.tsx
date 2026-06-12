@@ -22,7 +22,7 @@ export default function Home() {
                   'text-[45px] lg:text-[70px] ' +
                   'tracking-tight'}>
                 {lang === 'et'
-                  ? 'Parandame teie ettevõtte kvaliteeti ja tulemuslikkust'
+                  ? 'Parandame teie ettevõtte töö kvaliteeti ja tulemuslikkust'
                   : lang === 'ru'
                   ? 'Улучшаем качество и эффективность вашего бизнеса'
                   : 'Improve the quality and performance of your business'}
@@ -82,7 +82,7 @@ export default function Home() {
         <div className={'bg-white text-main'}>
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
-              <h2 className={'tracking-tight mb-8'}>{lang === 'et' ? 'Ajakiri' : 'Journal'}</h2>
+              <h2 className={'tracking-tight mb-8'}>{lang === 'et' ? 'Ajakiri' : lang === 'ru' ? 'Журнал' : 'Journal'}</h2>
               <div className="flex flex-col lg:flex-row gap-x-6">
                 <div className="w-full lg:w-1/2 max-lg:mb-12">
                   <a href={`${p}/great-displacement`} className="border-b-0">
@@ -108,7 +108,7 @@ export default function Home() {
                         {lang === 'et' ? 'vaimne töö → odavneb' : lang === 'ru' ? 'умственный труд → дешевеет' : 'cognitive labor → cheap'}
                       </text>
                       <text x="400" y="380" fontSize="13" fontFamily="monospace" fill="#999">
-                        {lang === 'et' ? 'füüsiline töö → napib' : lang === 'ru' ? 'физический труд → в дефиците' : 'physical labor → scarce'}
+                        {lang === 'et' ? 'füüsiline töö → jääb napiks' : lang === 'ru' ? 'физический труд → в дефиците' : 'physical labor → scarce'}
                       </text>
                     </svg>
                   </a>
@@ -214,13 +214,13 @@ export default function Home() {
                     </p>
                     <p className="text-sm text-gray-600 mt-3">
                       {lang === 'et'
-                        ? 'AI-agent Telegramis pärib andmed ja annab tootmismahu soovituse sekunditega.'
+                        ? 'AI-agent Telegramis pärib andmeid ja annab tootmismahu soovituse sekunditega.'
                         : lang === 'ru'
                         ? 'AI-агент в Telegram запрашивает данные и выдаёт рекомендацию по объёму производства за секунды.'
                         : 'An AI agent in Telegram pulls the data and gives a production recommendation in seconds.'}
                     </p>
                     <a href={`${p}/cases/aerosol-factory`} className="text-sm font-mono mt-4 font-normal">
-                      {lang === 'et' ? 'Loe juhtumit →' : lang === 'ru' ? 'Читать кейс →' : 'Read case →'}
+                      {lang === 'et' ? 'Loe kliendilugu →' : lang === 'ru' ? 'Читать кейс →' : 'Read case →'}
                     </a>
                   </div>
                 </div>
@@ -246,14 +246,14 @@ export default function Home() {
                     </span>
                     <p className="text-[1.2rem] lg:text-[1.68rem] font-light mt-3">
                       {lang === 'et'
-                        ? 'Administraator broneeris kliente käsitsi: graafikukonfliktid, vastamata kõned, teenindus ainult tööajal.'
+                        ? 'Administraator broneeris klientide aegu käsitsi: graafikukonfliktid, vastamata kõned, teenindus ainult tööajal.'
                         : lang === 'ru'
                         ? 'Администратор записывал клиентов вручную: конфликты расписания, пропущенные звонки, работа только в рабочее время.'
                         : 'The administrator booked clients manually: scheduling conflicts, missed calls, no service outside business hours.'}
                     </p>
                     <p className="text-sm text-gray-600 mt-3">
                       {lang === 'et'
-                        ? 'AI-agent Telegramis võtab broneeringuid vastu loomulikus keeles ning sünkroniseerib graafiku ja 1C-ga. Broneerimine töötab 24/7.'
+                        ? 'AI-agent Telegramis võtab broneeringuid vastu loomulikus keeles ning sünkroniseerib need graafiku ja 1C-ga. Broneerimine töötab 24/7.'
                         : lang === 'ru'
                         ? 'AI-агент в Telegram принимает записи на естественном языке, синхронизирует с расписанием и 1С. Запись работает 24/7.'
                         : 'A Telegram agent accepts bookings in natural language, syncs with schedule and 1C. Bookings run 24/7.'}
@@ -276,19 +276,19 @@ export default function Home() {
                 <div className="w-full lg:w-1/2 border border-main/10 p-8">
                   <p className="text-[1.1rem] lg:text-[1.4rem] font-light leading-relaxed mb-6">
                     {lang === 'et'
-                      ? '„Agent teeb sekunditega seda, millele planeerija kulutas iga päev tunde. Tasus end ära esimese kuuga."'
+                      ? '„Agent teeb sekunditega seda, millele planeerija kulutas iga päev tunde. Tasus end ära esimese kuuga.“'
                       : lang === 'ru'
                       ? '«Агент делает за секунды то, на что планировщик тратил несколько часов каждый день. Окупилось за первый месяц.»'
                       : '"The agent does in seconds what the planner used to spend hours on every single day. It paid for itself in the first month."'}
                   </p>
                   <div className="text-xs font-mono text-gray-400 uppercase tracking-widest">
-                    {lang === 'et' ? 'Aerosoolitehas · Tootmisjuht' : lang === 'ru' ? 'Фабрика Аэрозолей · Директор по производству' : 'Aerosol Factory · Production Director'}
+                    {lang === 'et' ? 'Aerosoolitehas · Tootmisdirektor' : lang === 'ru' ? 'Фабрика Аэрозолей · Директор по производству' : 'Aerosol Factory · Production Director'}
                   </div>
                 </div>
                 <div className="w-full lg:w-1/2 border border-main/10 p-8">
                   <p className="text-[1.1rem] lg:text-[1.4rem] font-light leading-relaxed mb-6">
                     {lang === 'et'
-                      ? '„Kliendid kirjutavad kell kaks öösel ja saavad kinnituse kohe. Varem tähendas see hommikul vastamata kõnet."'
+                      ? '„Kliendid kirjutavad kell kaks öösel ja saavad kinnituse kohe. Varem tähendas see hommikul vastamata kõnet.“'
                       : lang === 'ru'
                       ? '«Клиенты пишут в два часа ночи и получают подтверждение немедленно. Раньше это означало пропущенный звонок утром.»'
                       : '"Clients write at 2 AM and get confirmation immediately. Before, that meant a missed call in the morning."'}
@@ -324,7 +324,7 @@ export default function Home() {
                     n: '02',
                     title: lang === 'et' ? 'Prototüüp' : lang === 'ru' ? 'Прототип' : 'Prototype',
                     body: lang === 'et'
-                      ? 'Esimene töötav agent või prototüüp 2 nädalaga. Katsute seda ise, mitte ei vaata esitlust.'
+                      ? 'Esimene töötav agent või prototüüp 2 nädalaga. Saate ise käed külge panna, mitte ainult esitlust vaadata.'
                       : lang === 'ru'
                       ? 'Первый рабочий агент или прототип через 2 недели. Вы трогаете руками, не читаете презентацию.'
                       : 'First working agent or prototype in 2 weeks. You see and test it, not sit through a presentation.',
@@ -333,7 +333,7 @@ export default function Home() {
                     n: '03',
                     title: lang === 'et' ? 'Käivitus' : lang === 'ru' ? 'Запуск' : 'Launch',
                     body: lang === 'et'
-                      ? 'Juurutame teie taristus ja ühendame teie süsteemidega. Andmed jäävad ettevõttesse.'
+                      ? 'Juurutame lahenduse teie taristus ja ühendame selle teie süsteemidega. Andmed jäävad ettevõttesse.'
                       : lang === 'ru'
                       ? 'Разворачиваем в вашей инфраструктуре, подключаем к системам. Данные не покидают компанию.'
                       : 'We deploy in your infrastructure and connect to your systems. Your data stays inside.',
@@ -342,7 +342,7 @@ export default function Home() {
                     n: '04',
                     title: lang === 'et' ? 'Tugi' : lang === 'ru' ? 'Поддержка' : 'Support',
                     body: lang === 'et'
-                      ? 'Oleme olemas ka pärast käivitust ja täiustame süsteemi päris andmete põhjal.'
+                      ? 'Oleme teie jaoks olemas ka pärast käivitust ja täiustame süsteemi päris andmete põhjal.'
                       : lang === 'ru'
                       ? 'Остаёмся после запуска. Дорабатываем по мере работы с реальными данными.'
                       : 'We stay after launch and iterate as the system meets real-world data.',
@@ -395,7 +395,7 @@ export default function Home() {
                     ),
                     title: lang === 'et' ? 'Veebilehed ja maandumislehed' : lang === 'ru' ? 'Сайты и лендинги' : 'Websites & landing pages',
                     body: lang === 'et'
-                      ? 'Ettevõtte veebilehed, maandumislehed, promolehed. Kiiresti, ilma liigse koodita, teie domeenil.'
+                      ? 'Ettevõtte veebilehed, maandumislehed, kampaanialehed. Kiiresti, ilma liigse koodita, teie domeenil.'
                       : lang === 'ru'
                       ? 'Разрабатываем корпоративные сайты, лендинги, промо-страницы. Быстро, без лишнего кода, на вашем домене.'
                       : 'Corporate sites, landing pages, promo pages. Fast, clean, on your domain.',
@@ -465,12 +465,12 @@ export default function Home() {
                     body: lang === 'et' ? 'Tootmise planeerimine, laoarvestus, dispetšeerimine, CNC-integratsioonid' : lang === 'ru' ? 'Планирование, складской учёт, диспетчеризация, ЧПУ-интеграции' : 'Production planning, inventory, dispatch, CNC integrations',
                   },
                   {
-                    title: lang === 'et' ? 'Kaubandus ja e-pood' : lang === 'ru' ? 'Торговля и e-com' : 'Retail & e-commerce',
+                    title: lang === 'et' ? 'Jae- ja e-kaubandus' : lang === 'ru' ? 'Торговля и e-com' : 'Retail & e-commerce',
                     body: lang === 'et' ? 'Tellimuste töötlemine, hinnastamine, suhtlus tarnijatega' : lang === 'ru' ? 'Обработка заказов, ценообразование, работа с поставщиками' : 'Order processing, pricing, supplier communication',
                   },
                   {
                     title: lang === 'et' ? 'Teenindusettevõtted' : lang === 'ru' ? 'Сервисный бизнес' : 'Service businesses',
-                    body: lang === 'et' ? 'Klientide broneerimine, graafikud, teavitused, lojaalsus' : lang === 'ru' ? 'Запись клиентов, расписание, уведомления, лояльность' : 'Client booking, scheduling, notifications, loyalty',
+                    body: lang === 'et' ? 'Aegade broneerimine, graafikud, teavitused, püsikliendiprogrammid' : lang === 'ru' ? 'Запись клиентов, расписание, уведомления, лояльность' : 'Client booking, scheduling, notifications, loyalty',
                   },
                   {
                     title: lang === 'et' ? 'Rahandus ja raamatupidamine' : lang === 'ru' ? 'Финансы и учёт' : 'Finance & accounting',
@@ -478,11 +478,11 @@ export default function Home() {
                   },
                   {
                     title: lang === 'et' ? 'Logistika' : lang === 'ru' ? 'Логистика' : 'Logistics',
-                    body: lang === 'et' ? 'Saadetiste jälgimine, klienditeavitused, töö vedajatega' : lang === 'ru' ? 'Трекинг отправлений, уведомления клиентов, работа с перевозчиками' : 'Shipment tracking, client notifications, carrier management',
+                    body: lang === 'et' ? 'Saadetiste jälgimine, klienditeavitused, koostöö vedajatega' : lang === 'ru' ? 'Трекинг отправлений, уведомления клиентов, работа с перевозчиками' : 'Shipment tracking, client notifications, carrier management',
                   },
                   {
                     title: lang === 'et' ? 'Idufirmad ja tooted' : lang === 'ru' ? 'Стартапы и продукты' : 'Startups & products',
-                    body: lang === 'et' ? 'Kiire MVP, tootmistaristu, skaleerimine' : lang === 'ru' ? 'Быстрый MVP, прод-инфраструктура, масштабирование' : 'Fast MVP, production infrastructure, scaling',
+                    body: lang === 'et' ? 'Kiire MVP, toodangukeskkond, skaleerimine' : lang === 'ru' ? 'Быстрый MVP, прод-инфраструктура, масштабирование' : 'Fast MVP, production infrastructure, scaling',
                   },
                 ] as { title: string; body: string }[]).map(({ title, body }) => (
                   <div key={title}>
@@ -504,7 +504,7 @@ export default function Home() {
               </h2>
               <p className="text-[1.2rem] lg:text-[1.68rem] font-normal mb-2">
                 {lang === 'et'
-                  ? 'On teil projekt, idee või soovite lihtsalt rääkida,'
+                  ? 'Kui teil on projekt, idee või soovite lihtsalt rääkida,'
                   : lang === 'ru'
                   ? 'Есть проект, идея или просто хотите поговорить,'
                   : 'Got a project, an idea, or just want to say hello,'}
@@ -524,7 +524,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex justify-center mt-8">
-                <Image src="/images/bottom.jpg" alt="Get in touch" width={400} height={400} className="w-[400px] h-auto" />
+                <Image src="/images/bottom.jpg" alt={lang === 'et' ? 'Võtke ühendust' : lang === 'ru' ? 'Связаться' : 'Get in touch'} width={400} height={400} className="w-[400px] h-auto" />
               </div>
             </section>
           </div>

@@ -83,14 +83,14 @@ function ContactForm() {
       ? "Расскажите о вашем процессе..."
       : "Tell us about your process...",
     submit:     lang === "et" ? "Saada"                 : lang === "ru" ? "Отправить"             : "Send",
-    sending:    lang === "et" ? "Saadame..."            : lang === "ru" ? "Отправляем..."         : "Sending...",
+    sending:    lang === "et" ? "Saatmine..."           : lang === "ru" ? "Отправляем..."         : "Sending...",
     successH:   lang === "et" ? "Kätte saime, aitäh"    : lang === "ru" ? "Получили, спасибо"     : "Got it, thank you",
     successT:   lang === "et"
       ? "Vastame ühe päeva jooksul."
       : lang === "ru"
       ? "Ответим в течение дня."
       : "We'll get back to you within a day.",
-    sendAnother: lang === "et" ? "Saada veel"           : lang === "ru" ? "Отправить ещё"        : "Send another",
+    sendAnother: lang === "et" ? "Saada uus sõnum"      : lang === "ru" ? "Отправить ещё"        : "Send another",
     err403H:    lang === "et" ? "Liiga palju päringuid" : lang === "ru" ? "Слишком много запросов": "Too many requests",
     err403T:    lang === "et"
       ? "Oodake veidi ja proovige uuesti."
@@ -109,7 +109,7 @@ function ContactForm() {
       : lang === "ru"
       ? "Проверьте интернет и попробуйте снова."
       : "Check your connection and try again.",
-    tryAgain:   lang === "et" ? "Proovi uuesti"         : lang === "ru" ? "Попробовать снова"     : "Try again",
+    tryAgain:   lang === "et" ? "Proovige uuesti"       : lang === "ru" ? "Попробовать снова"     : "Try again",
   };
 
   const inputClass = [

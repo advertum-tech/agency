@@ -3,7 +3,7 @@
 import { useLang } from "@/app/context/LanguageContext";
 import LangToggle from "@/app/context/LangToggle";
 
-function DisplacementSvg() {
+function DisplacementSvg({ lang }: { lang: string }) {
   return (
     <svg
       viewBox="0 0 680 400"
@@ -27,8 +27,12 @@ function DisplacementSvg() {
       {([[300, 180, 260], [420, 70, 200]] as [number, number, number][]).map(([x, y1, y2], i) => (
         <line key={`d${i}`} x1={x} y1={y1} x2={x} y2={y2} stroke="#c00" strokeWidth="1" strokeDasharray="3 3" />
       ))}
-      <text x="50" y="30" fontSize="13" fontFamily="monospace" fill="#999">cognitive labor → cheap</text>
-      <text x="400" y="380" fontSize="13" fontFamily="monospace" fill="#999">physical labor → scarce</text>
+      <text x="50" y="30" fontSize="13" fontFamily="monospace" fill="#999">
+        {lang === "et" ? "vaimne töö → odavneb" : lang === "ru" ? "умственный труд → дешевеет" : "cognitive labor → cheap"}
+      </text>
+      <text x="400" y="380" fontSize="13" fontFamily="monospace" fill="#999">
+        {lang === "et" ? "füüsiline töö → jääb napiks" : lang === "ru" ? "физический труд → в дефиците" : "physical labor → scarce"}
+      </text>
     </svg>
   );
 }
@@ -92,7 +96,7 @@ export default function Journal() {
           <div className="flex flex-col lg:flex-row gap-x-6">
             <div className="w-full lg:w-1/2 max-lg:mb-8">
               <a href={`${p}/great-displacement`} className="border-b-0">
-                <DisplacementSvg />
+                <DisplacementSvg lang={lang} />
               </a>
               <div className="meta">
                 <time dateTime="2026-02-01">02/2026</time>

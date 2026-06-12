@@ -299,7 +299,7 @@ function SecuritySvg({ lang }: { lang: string }) {
             </g>
           ))}
           <text x={x + 40} y="158" fontSize="7" fontFamily="monospace" fill="#ccc" textAnchor="middle">
-            {["ERP / 1С", et ? "Andmebaas" : ru ? "База данных" : "Database", "CRM / API"][i]}
+            {["ERP / 1C", et ? "Andmebaas" : ru ? "База данных" : "Database", "CRM / API"][i]}
           </text>
         </g>
       ))}
@@ -313,8 +313,8 @@ function SecuritySvg({ lang }: { lang: string }) {
 
       {/* External cloud — blocked */}
       <rect x="510" y="60" width="120" height="80" rx="6" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="5 4" />
-      <text x="570" y="97"  fontSize="9" fontFamily="monospace" fill="#ccc" textAnchor="middle">External</text>
-      <text x="570" y="110" fontSize="9" fontFamily="monospace" fill="#ccc" textAnchor="middle">Cloud</text>
+      <text x="570" y="97"  fontSize="9" fontFamily="monospace" fill="#ccc" textAnchor="middle">{et ? "Väline" : ru ? "Внешнее" : "External"}</text>
+      <text x="570" y="110" fontSize="9" fontFamily="monospace" fill="#ccc" textAnchor="middle">{et ? "pilv" : ru ? "облако" : "Cloud"}</text>
 
       {/* Blocked arrow */}
       <line x1="510" y1="100" x2="436" y2="100" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#sec-arr)" />
@@ -394,7 +394,7 @@ export default function AI() {
                   onClick={() => setPilotOpen(o => !o)}
                   className="text-[1.2rem] lg:text-[1.68rem] font-normal text-left text-link"
                 >
-                  {et ? "Arutame pilooti" : ru ? "Обсудить пилот" : "Discuss a pilot"}
+                  {et ? "Arutame pilootprojekti" : ru ? "Обсудить пилот" : "Discuss a pilot"}
                   <span className={`inline-block ml-2 transition-transform duration-500 ${pilotOpen ? 'rotate-90' : ''}`}>→</span>
                 </button>
                 <div className={`grid transition-all duration-500 ease-in-out ${pilotOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
@@ -439,7 +439,7 @@ export default function AI() {
                   et: "Teadmised on inimestes, mitte süsteemides",
                   descRu: "Уходит сотрудник — уходит экспертиза. Регламенты есть, но их никто не читает и не применяет.",
                   descEn: "When someone leaves, knowledge leaves with them. Policies exist but nobody consults them.",
-                  descEt: "Töötaja lahkub — ekspertiis lahkub koos temaga. Juhendid on olemas, aga keegi ei loe ega kasuta neid.",
+                  descEt: "Töötaja lahkub — oskusteave lahkub koos temaga. Juhendid on olemas, aga keegi ei loe ega kasuta neid.",
                 },
                 {
                   icon: <IconDb />,
@@ -512,7 +512,7 @@ export default function AI() {
                   <line x1="340" y1="158" x2="340" y2="210" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#arr-sm)"/>
                   <line x1="432" y1="158" x2="432" y2="210" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#arr-sm)"/>
                   <rect x="202" y="213" width="90" height="34" rx="6" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
-                  <text x="248" y="234" fontSize="10" fontFamily="monospace" fill="#bbb" textAnchor="middle">ERP / 1С</text>
+                  <text x="248" y="234" fontSize="10" fontFamily="monospace" fill="#bbb" textAnchor="middle">ERP / 1C</text>
                   <rect x="294" y="213" width="90" height="34" rx="6" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
                   <text x="340" y="234" fontSize="10" fontFamily="monospace" fill="#bbb" textAnchor="middle">{et ? "Andmebaasid" : ru ? "Базы данных" : "Databases"}</text>
                   <rect x="386" y="213" width="90" height="34" rx="6" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
@@ -522,7 +522,7 @@ export default function AI() {
             <div className="flex flex-col lg:flex-row gap-x-6 mt-6">
               {[
                 { ru: "LLM — мозг", en: "LLM — brain", et: "LLM — aju", descRu: "Понимание языка, reasoning, принятие решений", descEn: "Language understanding, reasoning, decision-making", descEt: "Keele mõistmine, arutluskäik, otsuste tegemine" },
-                { ru: "MCP — руки", en: "MCP — hands", et: "MCP — käed", descRu: "Стандартный интерфейс к инструментам и внешним системам", descEn: "Standard interface to tools and external systems", descEt: "Standardne liides tööriistade ja välissüsteemide juurde" },
+                { ru: "MCP — руки", en: "MCP — hands", et: "MCP — käed", descRu: "Стандартный интерфейс к инструментам и внешним системам", descEn: "Standard interface to tools and external systems", descEt: "Standardne liides tööriistade ja välissüsteemidega" },
                 { ru: "RAG — память", en: "RAG — memory", et: "RAG — mälu", descRu: "Ответы из корпоративной базы знаний, актуальный контекст", descEn: "Answers from your corporate knowledge base, in context", descEt: "Vastused ettevõtte teadmusbaasist, ajakohane kontekst" },
               ].map((item, i) => (
                 <div key={i} className="w-full lg:w-1/3 max-lg:mb-12">
@@ -566,7 +566,7 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {et ? "Juhtumid" : ru ? "Кейсы" : "Case studies"}
+              {et ? "Kliendilood" : ru ? "Кейсы" : "Case studies"}
             </h2>
             <div className="flex flex-col lg:flex-row gap-x-6">
               {[
@@ -575,10 +575,10 @@ export default function AI() {
                   labelRu: "Салон красоты", labelEn: "Beauty salon", labelEt: "Ilusalong",
                   problemRu: "Администратор записывал клиентов вручную — конфликты расписания, пропущенные звонки, работа только в рабочее время.",
                   problemEn: "The administrator booked clients manually — scheduling conflicts, missed calls, no service outside business hours.",
-                  problemEt: "Administraator broneeris kliente käsitsi — graafikukonfliktid, vastamata kõned, teenindus ainult tööajal.",
+                  problemEt: "Administraator broneeris klientide aegu käsitsi — graafikukonfliktid, vastamata kõned, teenindus ainult tööajal.",
                   resultRu: "AI-агент в Telegram принимает записи на естественном языке, синхронизирует с расписанием и 1С. Запись работает 24/7.",
                   resultEn: "A Telegram agent accepts bookings in natural language, syncs with schedule and 1C. Bookings run 24/7.",
-                  resultEt: "AI-agent Telegramis võtab broneeringuid vastu loomulikus keeles ning sünkroniseerib graafiku ja 1C-ga. Broneerimine töötab 24/7.",
+                  resultEt: "AI-agent Telegramis võtab broneeringuid vastu loomulikus keeles ning sünkroniseerib need graafiku ja 1C-ga. Broneerimine töötab 24/7.",
                   href: null,
                 },
                 {
@@ -589,7 +589,7 @@ export default function AI() {
                   problemEt: "Planeerija kulutas tunde andmete kogumisele eri süsteemidest: ladu, tellimused, kataloog — enne kui sai teha ühe tootmisotsuse.",
                   resultRu: "AI-агент в Telegram запрашивает данные и выдаёт рекомендацию по объёму производства за секунды.",
                   resultEn: "An AI agent in Telegram queries data and delivers a production volume recommendation in seconds.",
-                  resultEt: "AI-agent Telegramis pärib andmed ja annab tootmismahu soovituse sekunditega.",
+                  resultEt: "AI-agent Telegramis pärib andmeid ja annab tootmismahu soovituse sekunditega.",
                   href: "/cases/aerosol-factory",
                 },
                 {
@@ -600,7 +600,7 @@ export default function AI() {
                   problemEt: "Uued töötajad kulutasid sisseelamisele nädalaid: juhendid laiali, ühtset vastuste allikat pole.",
                   resultRu: "Агент-куратор знаний отвечает на вопросы по регламентам и проводит по процессам. Онбординг сократился с недель до дней.",
                   resultEn: "A knowledge agent answers policy questions and guides through processes. Onboarding reduced from weeks to days.",
-                  resultEt: "Teadmiste kuraator vastab juhendite kohta käivatele küsimustele ja juhatab protsessides. Sisseelamine lühenes nädalatelt päevadele.",
+                  resultEt: "Teadmiste kuraator vastab juhendite kohta käivatele küsimustele ja juhendab protsessides. Sisseelamine lühenes nädalatelt päevadele.",
                   href: null,
                 },
               ].map((item, i) => (
@@ -612,7 +612,7 @@ export default function AI() {
                     <p className="text-sm text-gray-600 mt-3">{et ? item.resultEt : ru ? item.resultRu : item.resultEn}</p>
                     {item.href && (
                       <a href={item.href} className="text-sm font-mono mt-4 font-normal">
-                        {et ? "Loe juhtumit →" : ru ? "Читать кейс →" : "Read case →"}
+                        {et ? "Loe kliendilugu →" : ru ? "Читать кейс →" : "Read case →"}
                       </a>
                     )}
                   </div>
@@ -657,8 +657,8 @@ export default function AI() {
             <ProcessSvg lang={lang} />
             <div className="flex flex-col lg:flex-row gap-x-6 mt-4">
               {[
-                { ru: "Аудит", en: "Audit", et: "Audit", descRu: "Изучаем процессы, находим точки автоматизации", descEn: "We study your processes and find automation opportunities", descEt: "Uurime protsesse ja leiame automatiseerimise kohad" },
-                { ru: "Пилот", en: "Pilot", et: "Piloot", descRu: "Быстрый MVP на одном процессе — 2–4 недели", descEn: "A quick MVP on one process — 2–4 weeks", descEt: "Kiire MVP ühel protsessil — 2–4 nädalat" },
+                { ru: "Аудит", en: "Audit", et: "Audit", descRu: "Изучаем процессы, находим точки автоматизации", descEn: "We study your processes and find automation opportunities", descEt: "Uurime protsesse ja leiame automatiseerimisvõimalused" },
+                { ru: "Пилот", en: "Pilot", et: "Piloot", descRu: "Быстрый MVP на одном процессе — 2–4 недели", descEn: "A quick MVP on one process — 2–4 weeks", descEt: "Kiire MVP ühe protsessi põhjal — 2–4 nädalat" },
                 { ru: "Интеграция", en: "Integration", et: "Integratsioon", descRu: "Подключение к системам клиента", descEn: "Connecting to your existing systems", descEt: "Ühendamine kliendi süsteemidega" },
                 { ru: "Масштаб", en: "Scale", et: "Skaleerimine", descRu: "Расширение на другие процессы", descEn: "Expanding to other processes", descEt: "Laienemine teistele protsessidele" },
               ].map((step, i) => (

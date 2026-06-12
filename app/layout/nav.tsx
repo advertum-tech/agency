@@ -34,7 +34,7 @@ export default function Nav() {
                     onClick={() => setOpen(!open)}
                     className="inline p-0 text-main border-b border-main/25 hover:border-main/50 hover:bg-transparent"
                   >
-                    Menu
+                    {lang === "et" ? "Menüü" : lang === "ru" ? "Меню" : "Menu"}
                   </a>
                 </span>
               </div>

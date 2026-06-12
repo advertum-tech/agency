@@ -57,7 +57,7 @@ export default function InlineContactForm() {
         <p className="text-[1.2rem] font-normal">{et ? "Kätte saime, aitäh" : ru ? "Получили, спасибо" : "Got it, thank you"}</p>
         <p className="text-sm text-gray-600">{et ? "Vastame ühe päeva jooksul." : ru ? "Ответим в течение дня." : "We'll get back to you within a day."}</p>
         <button onClick={reset} className="font-mono text-xs text-gray-400 hover:text-gray-800 transition-colors text-left">
-          {et ? "Saada veel →" : ru ? "Отправить ещё →" : "Send another →"}
+          {et ? "Saada uus sõnum →" : ru ? "Отправить ещё →" : "Send another →"}
         </button>
       </div>
     );
@@ -84,7 +84,7 @@ export default function InlineContactForm() {
         <p className="text-[1.2rem] font-normal">{errH}</p>
         <p className="text-sm text-gray-600">{errT}</p>
         <button onClick={() => setStatus("idle")} className="font-mono text-xs text-gray-400 hover:text-gray-800 transition-colors text-left">
-          ← {et ? "Proovi uuesti" : ru ? "Попробовать снова" : "Try again"}
+          ← {et ? "Proovige uuesti" : ru ? "Попробовать снова" : "Try again"}
         </button>
       </div>
     );
@@ -132,7 +132,7 @@ export default function InlineContactForm() {
             status === "submitting" ? "opacity-40 cursor-not-allowed" : "opacity-100"
           )}
         >
-          {status === "submitting" ? (et ? "Saadame..." : ru ? "Отправляем..." : "Sending...") : (et ? "Saada →" : ru ? "Отправить →" : "Send →")}
+          {status === "submitting" ? (et ? "Saatmine..." : ru ? "Отправляем..." : "Sending...") : (et ? "Saada →" : ru ? "Отправить →" : "Send →")}
         </button>
       </div>
     </form>

@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="w-full lg:w-1/4 max-lg:mb-8">
             <address className="not-italic">Narva mnt 5, 10117 Tallinn<br/>Harjumaa, Estonia</address>
             <a href="https://www.google.com/maps?daddr=Narva+mnt+5,+10117+Tallinn" target="_blank">
-              {lang === 'et' ? 'Juhised' : lang === 'ru' ? 'Построить маршрут' : 'Get directions'}
+              {lang === 'et' ? 'Teejuhised' : lang === 'ru' ? 'Построить маршрут' : 'Get directions'}
               <i className="icon-arrows-slim-right inline-block -rotate-45"></i>
             </a>
           </div>
