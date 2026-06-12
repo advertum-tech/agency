@@ -186,6 +186,52 @@ const POSTPOSITIONS: Word[] = [
   { et: "vahel",  ru: "между" },
 ];
 
+type PomSentence = { form: string; et: string; ru: string };
+
+const POM_SENTENCES: PomSentence[] = [
+  { form: "pikkade",  et: "Pikkade puude all on vari.",       ru: "Под высокими деревьями есть тень." },
+  { form: "kollaste", et: "Kollaste lillede värv on ilus.",   ru: "Цвет жёлтых цветов красивый." },
+  { form: "lehtede",  et: "Sügisel on lehtede värv kollane.", ru: "Осенью цвет листьев жёлтый." },
+  { form: "lillede",  et: "Lillede lõhn on tugev.",           ru: "Запах цветов сильный." },
+  { form: "suurte",   et: "Suurte koerte hambad on teravad.", ru: "У больших собак острые зубы." },
+  { form: "emade",    et: "Emade päev on mais.",              ru: "День матерей — в мае." },
+  { form: "uute",     et: "Uute majade hinnad on kõrged.",    ru: "Цены новых домов высокие." },
+  { form: "tähtede",  et: "Tähtede valgus on imeline.",       ru: "Свет звёзд удивителен." },
+];
+
+// сравнение форм omastav vs osastav (мн. ч.) для одних и тех же слов
+const VS_FORMS: { word: string; omastav: string; osastav: string }[] = [
+  { word: "pikk — высокий",  omastav: "pikkade",  osastav: "pikki" },
+  { word: "kollane — жёлтый", omastav: "kollaste", osastav: "kollaseid" },
+  { word: "leht — лист",     omastav: "lehtede",  osastav: "lehti" },
+  { word: "lill — цветок",   omastav: "lillede",  osastav: "lilli" },
+  { word: "suur — большой",  omastav: "suurte",   osastav: "suuri" },
+  { word: "ema — мать",      omastav: "emade",    osastav: "emasid" },
+  { word: "uus — новый",     omastav: "uute",     osastav: "uusi" },
+  { word: "täht — звезда",   omastav: "tähtede",  osastav: "tähti" },
+];
+
+// когда omastav, а когда osastav
+const VS_RULES: { fn: string; kase: "omastav" | "osastav"; ex: string }[] = [
+  { fn: "Определение к существительному — «цветов запах»", kase: "omastav", ex: "lillede lõhn" },
+  { fn: "После послелога — «под цветами»",                 kase: "omastav", ex: "lillede all" },
+  { fn: "Прямое дополнение, процесс — «покупаю цветы»",    kase: "osastav", ex: "ostan lilli" },
+  { fn: "После количественного слова — «много цветов»",    kase: "osastav", ex: "palju lilli" },
+  { fn: "Глагол osastav-управления — «боюсь цветов»",      kase: "osastav", ex: "ma kardan lilli" },
+  { fn: "Отрицание — «не вижу цветов»",                    kase: "osastav", ex: "ma ei näe lilli" },
+];
+
+const OSA_SENTENCES: PomSentence[] = [
+  { form: "pikki",     et: "Pargis kasvab palju pikki puid.", ru: "В парке растёт много высоких деревьев." },
+  { form: "kollaseid", et: "Ostan kollaseid lilli.",          ru: "Покупаю жёлтые цветы." },
+  { form: "lehti",     et: "Sügisel korjan lehti.",           ru: "Осенью собираю листья." },
+  { form: "lilli",     et: "Naine ostab lilli.",              ru: "Женщина покупает цветы." },
+  { form: "suuri",     et: "Ma kardan suuri koeri.",          ru: "Я боюсь больших собак." },
+  { form: "emasid",    et: "Pargis on palju emasid lastega.", ru: "В парке много матерей с детьми." },
+  { form: "uusi",      et: "Linnas ehitatakse uusi maju.",    ru: "В городе строят новые дома." },
+  { form: "tähti",     et: "Õhtul vaatame tähti.",            ru: "Вечером смотрим на звёзды." },
+];
+
 function Card({ word, tone }: { word: Word; tone: Tone }) {
   const t = TONE[tone];
   return (
@@ -399,12 +445,14 @@ export default function EestiKeel() {
         .eesti-panel { display: none; }
 
         #eesti-tab-main:checked ~ .eesti-tabbar label[for="eesti-tab-main"],
-        #eesti-tab-pomastav:checked ~ .eesti-tabbar label[for="eesti-tab-pomastav"] {
+        #eesti-tab-pomastav:checked ~ .eesti-tabbar label[for="eesti-tab-pomastav"],
+        #eesti-tab-vs:checked ~ .eesti-tabbar label[for="eesti-tab-vs"] {
           color: ${PURPLE_FG};
           border-bottom-color: ${PURPLE_FG};
         }
         #eesti-tab-main:checked ~ .eesti-panel[data-tab="main"],
-        #eesti-tab-pomastav:checked ~ .eesti-panel[data-tab="pomastav"] {
+        #eesti-tab-pomastav:checked ~ .eesti-panel[data-tab="pomastav"],
+        #eesti-tab-vs:checked ~ .eesti-panel[data-tab="vs"] {
           display: block;
         }
 
@@ -481,10 +529,12 @@ export default function EestiKeel() {
           <div className="eesti-tabs">
             <input type="radio" name="eesti-tab" id="eesti-tab-main" className="eesti-tab-radio" defaultChecked />
             <input type="radio" name="eesti-tab" id="eesti-tab-pomastav" className="eesti-tab-radio" />
+            <input type="radio" name="eesti-tab" id="eesti-tab-vs" className="eesti-tab-radio" />
 
             <div className="eesti-tabbar">
               <label htmlFor="eesti-tab-main" className="eesti-tab">Main</label>
               <label htmlFor="eesti-tab-pomastav" className="eesti-tab">24 · Mitmuse omastav</label>
+              <label htmlFor="eesti-tab-vs" className="eesti-tab">omastav vs osastav</label>
             </div>
 
             <div className="eesti-panel" data-tab="main">
@@ -813,6 +863,39 @@ export default function EestiKeel() {
               прямого дополнения мн. числа (слово-объект действия, кого? что?; hambad,
               на -d). Это родительный падеж.
             </div>
+
+            <h2 className="eesti-section-title" style={{ marginTop: 56 }}>Примеры предложений</h2>
+            <p className="eesti-section-sub">
+              Plural omastav работает как родительный падеж мн. ч. в русском — показывает
+              «чего / чьих». Часто стоит{" "}
+              <b style={{ color: TEXT }}>перед другим существительным</b> (как определение)
+              или <b style={{ color: TEXT }}>перед послелогом</b>.
+            </p>
+
+            <div className="eesti-table-wrap">
+              <div className="eesti-table-scroll">
+                <table className="eesti-table eesti-table--analog">
+                  <thead>
+                    <tr>
+                      <th className="case-cell" style={{ textAlign: "left" }}>Слово (plural omastav)</th>
+                      <th>Предложение</th>
+                      <th>Перевод</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {POM_SENTENCES.map((s) => (
+                      <tr key={s.form}>
+                        <td className="case-cell">
+                          <div className="name">{s.form}</div>
+                        </td>
+                        <td><i>{s.et}</i></td>
+                        <td>{s.ru}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </section>
 
           <hr className="eesti-divider" />
@@ -842,6 +925,116 @@ export default function EestiKeel() {
                   </tbody>
                 </table>
               </div>
+            </div>
+          </section>
+
+            </div>
+
+            <div className="eesti-panel" data-tab="vs">
+
+          <section className="eesti-section">
+            <h2 className="eesti-section-title">omastav vs osastav — в чём разница</h2>
+            <p className="eesti-section-sub">
+              <b style={{ color: PURPLE_FG }}>omastav</b> — «чей / чего» (русский родительный,
+              роль определения). <b style={{ color: TEAL_FG }}>osastav</b> — «кого / что» в
+              действии или количестве (русский винительный / родительный частичный). Обе формы —
+              множественное число.
+            </p>
+
+            <div className="eesti-table-wrap">
+              <div className="eesti-table-scroll">
+                <table className="eesti-table eesti-table--analog">
+                  <thead>
+                    <tr>
+                      <th className="case-cell" style={{ textAlign: "left" }}>Слово</th>
+                      <th style={{ color: PURPLE_FG }}>omastav (мн.)</th>
+                      <th style={{ color: TEAL_FG }}>osastav (мн.)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {VS_FORMS.map((r) => (
+                      <tr key={r.word}>
+                        <td className="case-cell">
+                          <div className="name">{r.word}</div>
+                        </td>
+                        <td style={{ color: PURPLE_FG }}>{r.omastav}</td>
+                        <td style={{ color: TEAL_FG }}>{r.osastav}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section className="eesti-section">
+            <h2 className="eesti-section-title">Когда omastav, когда osastav</h2>
+            <p className="eesti-section-sub">Падеж выбирается по функции слова в предложении</p>
+
+            <div className="eesti-table-wrap">
+              <div className="eesti-table-scroll">
+                <table className="eesti-table eesti-table--analog">
+                  <thead>
+                    <tr>
+                      <th className="case-cell" style={{ textAlign: "left" }}>Функция</th>
+                      <th>Падеж</th>
+                      <th>Пример</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {VS_RULES.map((r) => (
+                      <tr key={r.fn}>
+                        <td className="case-cell">
+                          <div className="name" style={{ fontWeight: 400 }}>{r.fn}</div>
+                        </td>
+                        <td style={{ color: r.kase === "omastav" ? PURPLE_FG : TEAL_FG, fontWeight: 500 }}>
+                          {r.kase}
+                        </td>
+                        <td><i>{r.ex}</i></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section className="eesti-section">
+            <h2 className="eesti-section-title">Plural osastav — примеры</h2>
+            <p className="eesti-section-sub">
+              osastav — для прямого дополнения (процесс / частично), после количественных
+              слов (palju, vähe, mitu), в отрицании и с глаголами osastav-управления.
+            </p>
+
+            <div className="eesti-table-wrap">
+              <div className="eesti-table-scroll">
+                <table className="eesti-table eesti-table--analog">
+                  <thead>
+                    <tr>
+                      <th className="case-cell" style={{ textAlign: "left" }}>Слово (plural osastav)</th>
+                      <th>Предложение</th>
+                      <th>Перевод</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {OSA_SENTENCES.map((s) => (
+                      <tr key={s.form}>
+                        <td className="case-cell">
+                          <div className="name">{s.form}</div>
+                        </td>
+                        <td><i>{s.et}</i></td>
+                        <td>{s.ru}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="eesti-callout">
+              <strong>Итог:</strong> <b style={{ color: PURPLE_FG }}>omastav</b> — «чей / чего»
+              (русский родительный, роль определения), <b style={{ color: TEAL_FG }}>osastav</b> —
+              «кого / что» в действии или количестве (русский винительный / родительный частичный).
             </div>
           </section>
 

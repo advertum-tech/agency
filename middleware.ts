@@ -6,6 +6,9 @@ export function middleware(request: NextRequest) {
   // Already on a localized path — do nothing
   if (pathname.startsWith("/ru")) return NextResponse.next();
 
+  // Legal pages exist only in English — no /ru counterpart
+  if (pathname === "/terms" || pathname === "/privacy") return NextResponse.next();
+
   // Check user's saved language preference (set by LangToggle)
   const cookieLang = request.cookies.get("lang")?.value;
   if (cookieLang === "ru") {

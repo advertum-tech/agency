@@ -2,7 +2,6 @@
 
 import cn from "classnames";
 import { useLang } from "@/app/context/LanguageContext";
-import LangToggle from "@/app/context/LangToggle";
 
 export default function Footer() {
   const lang = useLang();
@@ -25,17 +24,15 @@ export default function Footer() {
             </a>
           </div>
           <div className="w-full lg:w-1/4 max-lg:mb-8">
-            <a href="https://t.me/advertumofficial" target="_blank">Follow @advertumofficial</a>
+            <div className="flex flex-col gap-1 max-lg:items-center">
+              <a href="/terms">Terms of Service</a>
+              <a href="/privacy">Privacy Policy</a>
+            </div>
           </div>
           <div className="w-full lg:w-1/4">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="text-xs text-gray-400">Language</span>
-              <LangToggle />
-            </div>
-            &copy; 2009 - {new Date().getFullYear()} <a href="https://www.teatmik.ee/et/personlegal/16351919-Advertum-Tech-O%C3%9C" target="_blank">Advertum Tech OÜ</a>
-            <div className="mt-4 flex flex-col gap-1">
-              <a href="/eesti-keel" className="text-sm opacity-50 hover:opacity-80 transition-opacity">Eesti keel</a>
-            </div>
+            <a href="https://www.teatmik.ee/et/personlegal/16351919-Advertum-Tech-O%C3%9C" target="_blank">Advertum Tech OÜ</a> · Registry code 16351919
+            <address className="not-italic">Valge tn 10-16, Tallinn, Harjumaa, 11413, Estonia</address>
+            <div className="mt-4">&copy; 2009 - {new Date().getFullYear()} Advertum Tech OÜ. All rights reserved.</div>
           </div>
         </div>
       </div>
