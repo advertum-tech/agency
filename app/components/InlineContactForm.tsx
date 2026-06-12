@@ -10,6 +10,7 @@ type Status = "idle" | "submitting" | "success" | "error_403" | "error_500" | "e
 export default function InlineContactForm() {
   const lang = useLang();
   const ru = lang === "ru";
+  const et = lang === "et";
   const [status, setStatus] = useState<Status>("idle");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -53,10 +54,10 @@ export default function InlineContactForm() {
         <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
         </svg>
-        <p className="text-[1.2rem] font-normal">{ru ? "Получили, спасибо" : "Got it, thank you"}</p>
-        <p className="text-sm text-gray-600">{ru ? "Ответим в течение дня." : "We'll get back to you within a day."}</p>
+        <p className="text-[1.2rem] font-normal">{et ? "Kätte saime, aitäh" : ru ? "Получили, спасибо" : "Got it, thank you"}</p>
+        <p className="text-sm text-gray-600">{et ? "Vastame ühe päeva jooksul." : ru ? "Ответим в течение дня." : "We'll get back to you within a day."}</p>
         <button onClick={reset} className="font-mono text-xs text-gray-400 hover:text-gray-800 transition-colors text-left">
-          {ru ? "Отправить ещё →" : "Send another →"}
+          {et ? "Saada veel →" : ru ? "Отправить ещё →" : "Send another →"}
         </button>
       </div>
     );
@@ -65,16 +66,16 @@ export default function InlineContactForm() {
   if (status.startsWith("error")) {
     const msgs: Record<string, [string, string]> = {
       error_403: [
-        ru ? "Слишком много запросов" : "Too many requests",
-        ru ? "Подождите немного и попробуйте снова." : "Please wait a moment and try again.",
+        et ? "Liiga palju päringuid" : ru ? "Слишком много запросов" : "Too many requests",
+        et ? "Oodake veidi ja proovige uuesti." : ru ? "Подождите немного и попробуйте снова." : "Please wait a moment and try again.",
       ],
       error_500: [
-        ru ? "Ошибка на сервере" : "Server error",
-        ru ? "Что-то пошло не так. Напишите нам: info@advertum.com" : "Something went wrong. Email us: info@advertum.com",
+        et ? "Serveri viga" : ru ? "Ошибка на сервере" : "Server error",
+        et ? "Midagi läks valesti. Kirjutage meile: info@advertum.com" : ru ? "Что-то пошло не так. Напишите нам: info@advertum.com" : "Something went wrong. Email us: info@advertum.com",
       ],
       error_network: [
-        ru ? "Нет соединения" : "No connection",
-        ru ? "Проверьте интернет и попробуйте снова." : "Check your connection and try again.",
+        et ? "Ühendus puudub" : ru ? "Нет соединения" : "No connection",
+        et ? "Kontrollige internetiühendust ja proovige uuesti." : ru ? "Проверьте интернет и попробуйте снова." : "Check your connection and try again.",
       ],
     };
     const [errH, errT] = msgs[status] ?? ["Error", "Something went wrong."];
@@ -83,7 +84,7 @@ export default function InlineContactForm() {
         <p className="text-[1.2rem] font-normal">{errH}</p>
         <p className="text-sm text-gray-600">{errT}</p>
         <button onClick={() => setStatus("idle")} className="font-mono text-xs text-gray-400 hover:text-gray-800 transition-colors text-left">
-          ← {ru ? "Попробовать снова" : "Try again"}
+          ← {et ? "Proovi uuesti" : ru ? "Попробовать снова" : "Try again"}
         </button>
       </div>
     );
@@ -93,10 +94,10 @@ export default function InlineContactForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-8" noValidate>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
-          <label className={labelClass}>{ru ? "Имя" : "Name"}</label>
+          <label className={labelClass}>{et ? "Nimi" : ru ? "Имя" : "Name"}</label>
           <input
             type="text" value={name} onChange={e => setName(e.target.value)}
-            placeholder={ru ? "Иван" : "John"} className={inputClass} disabled={status === "submitting"}
+            placeholder={et ? "Jaan" : ru ? "Иван" : "John"} className={inputClass} disabled={status === "submitting"}
           />
         </div>
         <div>
@@ -107,18 +108,18 @@ export default function InlineContactForm() {
           />
         </div>
         <div>
-          <label className={labelClass}>{ru ? "Телефон" : "Phone"}</label>
+          <label className={labelClass}>{et ? "Telefon" : ru ? "Телефон" : "Phone"}</label>
           <input
             type="tel" value={phone} onChange={e => setPhone(e.target.value)}
-            placeholder={ru ? "+7 900 000 00 00" : "+1 800 000 0000"} className={inputClass} disabled={status === "submitting"}
+            placeholder={et ? "+372 5000 0000" : ru ? "+7 900 000 00 00" : "+1 800 000 0000"} className={inputClass} disabled={status === "submitting"}
           />
         </div>
       </div>
       <div>
-        <label className={labelClass}>{ru ? "Комментарий" : "Message"}</label>
+        <label className={labelClass}>{et ? "Sõnum" : ru ? "Комментарий" : "Message"}</label>
         <textarea
           value={comment} onChange={e => setComment(e.target.value)}
-          placeholder={ru ? "Расскажите о вашем процессе..." : "Tell us about your process..."}
+          placeholder={et ? "Rääkige oma protsessist..." : ru ? "Расскажите о вашем процессе..." : "Tell us about your process..."}
           rows={4} className={cn(inputClass, "resize-none")} disabled={status === "submitting"}
         />
       </div>
@@ -131,7 +132,7 @@ export default function InlineContactForm() {
             status === "submitting" ? "opacity-40 cursor-not-allowed" : "opacity-100"
           )}
         >
-          {status === "submitting" ? (ru ? "Отправляем..." : "Sending...") : (ru ? "Отправить →" : "Send →")}
+          {status === "submitting" ? (et ? "Saadame..." : ru ? "Отправляем..." : "Sending...") : (et ? "Saada →" : ru ? "Отправить →" : "Send →")}
         </button>
       </div>
     </form>

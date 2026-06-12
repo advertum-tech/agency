@@ -22,14 +22,15 @@ export default function LangToggle({ className }: { className?: string }) {
     cursor: "pointer",
   };
 
-  function switchTo(targetLang: "en" | "ru") {
+  function switchTo(targetLang: "en" | "et") {
     if (targetLang === lang) return;
     // Persist choice in cookie — middleware will use it on next request
     document.cookie = `lang=${targetLang}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
-    if (targetLang === "ru") {
-      router.push(`/ru${pathname === "/" ? "" : pathname}`);
+    const base = pathname.replace(/^\/(et|ru)(?=\/|$)/, "") || "/";
+    if (targetLang === "et") {
+      router.push(`/et${base === "/" ? "" : base}`);
     } else {
-      router.push(pathname.replace(/^\/ru/, "") || "/");
+      router.push(base);
     }
   }
 
@@ -43,12 +44,21 @@ export default function LangToggle({ className }: { className?: string }) {
         EN
       </button>
       <button
+        onClick={() => switchTo("et")}
+        style={lang === "et" ? active : inactive}
+        className="rounded-r-full px-4 py-1.5 transition-colors"
+      >
+        ET
+      </button>
+      {/* RU выключен — дерево /ru осталось в коде, доступно только по прямой ссылке
+      <button
         onClick={() => switchTo("ru")}
         style={lang === "ru" ? active : inactive}
         className="rounded-r-full px-4 py-1.5 transition-colors"
       >
         RU
       </button>
+      */}
     </div>
   );
 }

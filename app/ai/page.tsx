@@ -6,6 +6,7 @@ import InlineContactForm from "@/app/components/InlineContactForm";
 // ── Hero: agent network ───────────────────────────────────────────────────────
 function HeroSvg({ lang }: { lang: string }) {
   const ru = lang === "ru";
+  const et = lang === "et";
   return (
     <svg viewBox="0 0 300 260" className="w-full" aria-hidden="true">
       <defs>
@@ -21,15 +22,15 @@ function HeroSvg({ lang }: { lang: string }) {
       ))}
       <rect x="8" y="110" width="64" height="36" rx="6" fill="none" stroke="#1a1a1a" strokeWidth="1.5" />
       <text x="40" y="131" fontSize="9" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle">
-        {ru ? "Запрос" : "Request"}
+        {et ? "Päring" : ru ? "Запрос" : "Request"}
       </text>
       <line x1="72" y1="128" x2="116" y2="80" stroke="#1a1a1a" strokeWidth="1" markerEnd="url(#ai-arr)" />
       <line x1="72" y1="128" x2="116" y2="128" stroke="#1a1a1a" strokeWidth="1" markerEnd="url(#ai-arr)" />
       <line x1="72" y1="128" x2="116" y2="176" stroke="#1a1a1a" strokeWidth="1" markerEnd="url(#ai-arr)" />
       {[
-        { y: 62, label: "LLM", sub: ru ? "мозг" : "brain" },
-        { y: 110, label: "MCP", sub: ru ? "руки" : "hands" },
-        { y: 158, label: "RAG", sub: ru ? "память" : "memory" },
+        { y: 62, label: "LLM", sub: et ? "aju" : ru ? "мозг" : "brain" },
+        { y: 110, label: "MCP", sub: et ? "käed" : ru ? "руки" : "hands" },
+        { y: 158, label: "RAG", sub: et ? "mälu" : ru ? "память" : "memory" },
       ].map((a) => (
         <g key={a.label}>
           <rect x="120" y={a.y} width="68" height="36" rx="6" fill="white" stroke="#1a1a1a" strokeWidth="1.5" />
@@ -42,7 +43,7 @@ function HeroSvg({ lang }: { lang: string }) {
       <line x1="188" y1="176" x2="228" y2="128" stroke="#1a1a1a" strokeWidth="1" markerEnd="url(#ai-arr)" />
       <rect x="232" y="110" width="64" height="36" rx="6" fill="none" stroke="#1a1a1a" strokeWidth="1.5" />
       <text x="264" y="131" fontSize="9" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle">
-        {ru ? "Ответ" : "Result"}
+        {et ? "Vastus" : ru ? "Ответ" : "Result"}
       </text>
     </svg>
   );
@@ -51,6 +52,7 @@ function HeroSvg({ lang }: { lang: string }) {
 // ── Pain points: fragmented workday ──────────────────────────────────────────
 function TimeSvg({ lang }: { lang: string }) {
   const ru = lang === "ru";
+  const et = lang === "et";
   const bars: [number, number][] = [
     [78,22],[98,14],[118,34],[142,16],[162,26],[182,12],
     [205,32],[225,18],[248,14],[268,28],[292,20],[312,30],
@@ -71,7 +73,7 @@ function TimeSvg({ lang }: { lang: string }) {
         <rect key={i} x={x - 3} y={62 - h} width="6" height={h} fill={i % 5 === 0 ? "#1a1a1a" : "#ccc"} opacity="0.75" />
       ))}
       <text x="350" y="14" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle" letterSpacing="2">
-        {ru ? "— ваш рабочий день —" : "— your workday today —"}
+        {et ? "— teie tööpäev täna —" : ru ? "— ваш рабочий день —" : "— your workday today —"}
       </text>
     </svg>
   );
@@ -265,6 +267,7 @@ const IconPeople = () => (
 // ── Security: server boundary ─────────────────────────────────────────────────
 function SecuritySvg({ lang }: { lang: string }) {
   const ru = lang === "ru";
+  const et = lang === "et";
   return (
     <svg viewBox="0 0 680 200" className="w-full rounded-3xl" style={{ background: "#f8f8f8" }} aria-hidden="true">
       <defs>
@@ -282,7 +285,7 @@ function SecuritySvg({ lang }: { lang: string }) {
       {/* Your infrastructure boundary */}
       <rect x="40" y="24" width="380" height="152" rx="8" fill="none" stroke="#1a1a1a" strokeWidth="1.5" />
       <text x="230" y="16" fontSize="8" fontFamily="monospace" fill="#bbb" textAnchor="middle" letterSpacing="3">
-        {ru ? "ВАША ИНФРАСТРУКТУРА" : "YOUR INFRASTRUCTURE"}
+        {et ? "TEIE TARISTU" : ru ? "ВАША ИНФРАСТРУКТУРА" : "YOUR INFRASTRUCTURE"}
       </text>
 
       {/* Three servers inside */}
@@ -296,7 +299,7 @@ function SecuritySvg({ lang }: { lang: string }) {
             </g>
           ))}
           <text x={x + 40} y="158" fontSize="7" fontFamily="monospace" fill="#ccc" textAnchor="middle">
-            {["ERP / 1С", ru ? "База данных" : "Database", "CRM / API"][i]}
+            {["ERP / 1С", et ? "Andmebaas" : ru ? "База данных" : "Database", "CRM / API"][i]}
           </text>
         </g>
       ))}
@@ -320,7 +323,7 @@ function SecuritySvg({ lang }: { lang: string }) {
 
       {/* Labels */}
       <text x="570" y="155" fontSize="8" fontFamily="monospace" fill="#ccc" textAnchor="middle">
-        {ru ? "— заблокировано —" : "— blocked —"}
+        {et ? "— blokeeritud —" : ru ? "— заблокировано —" : "— blocked —"}
       </text>
     </svg>
   );
@@ -328,8 +331,9 @@ function SecuritySvg({ lang }: { lang: string }) {
 
 // ── How we work: process timeline ─────────────────────────────────────────────
 function ProcessSvg({ lang }: { lang: string }) {
-  const ru = lang === "ru";
-  const steps = ru
+  const steps = lang === "et"
+    ? ["Audit", "Piloot", "Integratsioon", "Skaleerimine"]
+    : lang === "ru"
     ? ["Аудит", "Пилот", "Интеграция", "Масштаб"]
     : ["Audit", "Pilot", "Integration", "Scale"];
   const xs = [100, 293, 487, 680 - 100];
@@ -364,7 +368,8 @@ function ProcessSvg({ lang }: { lang: string }) {
 export default function AI() {
   const lang = useLang();
   const ru = lang === "ru";
-  const p = ru ? "/ru" : "";
+  const et = lang === "et";
+  const p = et ? "/et" : ru ? "/ru" : "";
   const [pilotOpen, setPilotOpen] = useState(false);
 
   return (
@@ -376,10 +381,12 @@ export default function AI() {
             <div className="flex flex-col lg:flex-row">
               <div className="w-full lg:w-7/12">
                 <h1 className="text-[45px] lg:text-[70px] tracking-tight">
-                  {ru ? "Рутину — агентам. Решения — людям." : "Routine to agents. Decisions to people."}
+                  {et ? "Rutiin agentidele. Otsused inimestele." : ru ? "Рутину — агентам. Решения — людям." : "Routine to agents. Decisions to people."}
                 </h1>
                 <p className="lg:text-[1.4rem] font-normal my-5 leading-normal">
-                  {ru
+                  {et
+                    ? "Viime AI-agendid äriprotsessidesse — ühendame teie süsteemidega, juurutame teie serverites, seadistame teie ülesannete järgi."
+                    : ru
                     ? "Мы внедряем AI-агентов в бизнес-процессы — подключаем к вашим системам, разворачиваем на ваших серверах, настраиваем под ваши задачи."
                     : "We embed AI agents into business operations — connected to your systems, running on your servers, tuned to your processes."}
                 </p>
@@ -387,7 +394,7 @@ export default function AI() {
                   onClick={() => setPilotOpen(o => !o)}
                   className="text-[1.2rem] lg:text-[1.68rem] font-normal text-left text-link"
                 >
-                  {ru ? "Обсудить пилот" : "Discuss a pilot"}
+                  {et ? "Arutame pilooti" : ru ? "Обсудить пилот" : "Discuss a pilot"}
                   <span className={`inline-block ml-2 transition-transform duration-500 ${pilotOpen ? 'rotate-90' : ''}`}>→</span>
                 </button>
                 <div className={`grid transition-all duration-500 ease-in-out ${pilotOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
@@ -411,7 +418,7 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {ru ? "Где теряется время" : "Where time goes"}
+              {et ? "Kuhu kaob aeg" : ru ? "Где теряется время" : "Where time goes"}
             </h2>
             <TimeSvg lang={lang} />
             <div className="flex flex-col lg:flex-row gap-x-6 mt-8">
@@ -420,28 +427,34 @@ export default function AI() {
                   icon: <IconClock />,
                   ru: "Задачи, которые нельзя делегировать",
                   en: "Tasks too small to delegate, too many to ignore",
+                  et: "Ülesanded, mida ei saa delegeerida",
                   descRu: "Запись, заявки, отчёты — всё это съедает часы каждый день, но нанимать человека под это нецелесообразно.",
                   descEn: "Appointments, requests, reports — each takes minutes, together they take hours.",
+                  descEt: "Broneeringud, päringud, aruanded — kõik see sööb iga päev tunde, aga inimese palkamine selleks ei tasu ära.",
                 },
                 {
                   icon: <IconPerson />,
                   ru: "Знания внутри людей, а не систем",
                   en: "Expertise lives in people, not systems",
+                  et: "Teadmised on inimestes, mitte süsteemides",
                   descRu: "Уходит сотрудник — уходит экспертиза. Регламенты есть, но их никто не читает и не применяет.",
                   descEn: "When someone leaves, knowledge leaves with them. Policies exist but nobody consults them.",
+                  descEt: "Töötaja lahkub — ekspertiis lahkub koos temaga. Juhendid on olemas, aga keegi ei loe ega kasuta neid.",
                 },
                 {
                   icon: <IconDb />,
                   ru: "Данные есть — картины нет",
                   en: "Data exists, but it's silent",
+                  et: "Andmed on olemas — tervikpilti pole",
                   descRu: "ERP, 1С, базы, таблицы — данные разбросаны, никто их не агрегирует, никто по ним не действует.",
                   descEn: "ERP, databases, spreadsheets — data is scattered, nobody aggregates it, nobody acts on it.",
+                  descEt: "ERP, 1C, andmebaasid, tabelid — andmed on laiali, keegi ei koonda neid ega tegutse nende põhjal.",
                 },
               ].map((item, i) => (
                 <div key={i} className="w-full lg:w-1/3 max-lg:mb-12">
                   <div className="mb-3">{item.icon}</div>
-                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal">{ru ? item.ru : item.en}</span>
-                  <p className="text-sm text-gray-600 mt-3">{ru ? item.descRu : item.descEn}</p>
+                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal">{et ? item.et : ru ? item.ru : item.en}</span>
+                  <p className="text-sm text-gray-600 mt-3">{et ? item.descEt : ru ? item.descRu : item.descEn}</p>
                 </div>
               ))}
             </div>
@@ -454,7 +467,7 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {ru ? "Как это работает" : "How it works"}
+              {et ? "Kuidas see töötab" : ru ? "Как это работает" : "How it works"}
             </h2>
             <div>
                 <svg viewBox="0 0 680 270" className="w-full rounded-3xl" style={{background: '#f8f8f8'}}>
@@ -474,26 +487,26 @@ export default function AI() {
                   ))}
                   <rect x="25" y="84" width="118" height="48" rx="8" fill="white" stroke="#1a1a1a" strokeWidth="1.5"/>
                   <text x="84" y="113" fontSize="12" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle">
-                    {ru ? "Запрос" : "Request"}
+                    {et ? "Päring" : ru ? "Запрос" : "Request"}
                   </text>
                   <line x1="143" y1="108" x2="198" y2="108" stroke="#1a1a1a" strokeWidth="1.5" markerEnd="url(#arr)"/>
                   <rect x="202" y="58" width="276" height="100" rx="12" fill="white" stroke="#1a1a1a" strokeWidth="2"/>
                   <text x="340" y="78" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle" letterSpacing="4">
-                    {ru ? "АГЕНТ" : "AGENT"}
+                    {et ? "AGENT" : ru ? "АГЕНТ" : "AGENT"}
                   </text>
                   <line x1="214" y1="86" x2="466" y2="86" stroke="#ebebeb" strokeWidth="1"/>
                   <line x1="294" y1="86" x2="294" y2="158" stroke="#ebebeb" strokeWidth="1"/>
                   <line x1="386" y1="86" x2="386" y2="158" stroke="#ebebeb" strokeWidth="1"/>
                   <text x="248" y="116" fontSize="13" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle" fontWeight="600">LLM</text>
-                  <text x="248" y="134" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle">{ru ? "— мозг" : "— brain"}</text>
+                  <text x="248" y="134" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle">{et ? "— aju" : ru ? "— мозг" : "— brain"}</text>
                   <text x="340" y="116" fontSize="13" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle" fontWeight="600">MCP</text>
-                  <text x="340" y="134" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle">{ru ? "— руки" : "— hands"}</text>
+                  <text x="340" y="134" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle">{et ? "— käed" : ru ? "— руки" : "— hands"}</text>
                   <text x="432" y="116" fontSize="13" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle" fontWeight="600">RAG</text>
-                  <text x="432" y="134" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle">{ru ? "— память" : "— memory"}</text>
+                  <text x="432" y="134" fontSize="9" fontFamily="monospace" fill="#bbb" textAnchor="middle">{et ? "— mälu" : ru ? "— память" : "— memory"}</text>
                   <line x1="478" y1="108" x2="537" y2="108" stroke="#1a1a1a" strokeWidth="1.5" markerEnd="url(#arr)"/>
                   <rect x="541" y="84" width="118" height="48" rx="8" fill="white" stroke="#1a1a1a" strokeWidth="1.5"/>
                   <text x="600" y="113" fontSize="12" fontFamily="monospace" fill="#1a1a1a" textAnchor="middle">
-                    {ru ? "Отчёт" : "Report"}
+                    {et ? "Aruanne" : ru ? "Отчёт" : "Report"}
                   </text>
                   <line x1="248" y1="158" x2="248" y2="210" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#arr-sm)"/>
                   <line x1="340" y1="158" x2="340" y2="210" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3" markerEnd="url(#arr-sm)"/>
@@ -501,20 +514,20 @@ export default function AI() {
                   <rect x="202" y="213" width="90" height="34" rx="6" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
                   <text x="248" y="234" fontSize="10" fontFamily="monospace" fill="#bbb" textAnchor="middle">ERP / 1С</text>
                   <rect x="294" y="213" width="90" height="34" rx="6" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
-                  <text x="340" y="234" fontSize="10" fontFamily="monospace" fill="#bbb" textAnchor="middle">{ru ? "Базы данных" : "Databases"}</text>
+                  <text x="340" y="234" fontSize="10" fontFamily="monospace" fill="#bbb" textAnchor="middle">{et ? "Andmebaasid" : ru ? "Базы данных" : "Databases"}</text>
                   <rect x="386" y="213" width="90" height="34" rx="6" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
                   <text x="432" y="234" fontSize="10" fontFamily="monospace" fill="#bbb" textAnchor="middle">CRM / API</text>
                 </svg>
             </div>
             <div className="flex flex-col lg:flex-row gap-x-6 mt-6">
               {[
-                { ru: "LLM — мозг", en: "LLM — brain", descRu: "Понимание языка, reasoning, принятие решений", descEn: "Language understanding, reasoning, decision-making" },
-                { ru: "MCP — руки", en: "MCP — hands", descRu: "Стандартный интерфейс к инструментам и внешним системам", descEn: "Standard interface to tools and external systems" },
-                { ru: "RAG — память", en: "RAG — memory", descRu: "Ответы из корпоративной базы знаний, актуальный контекст", descEn: "Answers from your corporate knowledge base, in context" },
+                { ru: "LLM — мозг", en: "LLM — brain", et: "LLM — aju", descRu: "Понимание языка, reasoning, принятие решений", descEn: "Language understanding, reasoning, decision-making", descEt: "Keele mõistmine, arutluskäik, otsuste tegemine" },
+                { ru: "MCP — руки", en: "MCP — hands", et: "MCP — käed", descRu: "Стандартный интерфейс к инструментам и внешним системам", descEn: "Standard interface to tools and external systems", descEt: "Standardne liides tööriistade ja välissüsteemide juurde" },
+                { ru: "RAG — память", en: "RAG — memory", et: "RAG — mälu", descRu: "Ответы из корпоративной базы знаний, актуальный контекст", descEn: "Answers from your corporate knowledge base, in context", descEt: "Vastused ettevõtte teadmusbaasist, ajakohane kontekst" },
               ].map((item, i) => (
                 <div key={i} className="w-full lg:w-1/3 max-lg:mb-12">
-                  <p className="text-[1.2rem] lg:text-[1.68rem] font-light font-mono">{ru ? item.ru : item.en}</p>
-                  <p className="text-sm text-gray-600">{ru ? item.descRu : item.descEn}</p>
+                  <p className="text-[1.2rem] lg:text-[1.68rem] font-light font-mono">{et ? item.et : ru ? item.ru : item.en}</p>
+                  <p className="text-sm text-gray-600">{et ? item.descEt : ru ? item.descRu : item.descEn}</p>
                 </div>
               ))}
             </div>
@@ -527,20 +540,20 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {ru ? "Команда агентов" : "Meet the agents"}
+              {et ? "Agentide meeskond" : ru ? "Команда агентов" : "Meet the agents"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: <IconDoc />, ru: "Документалист", en: "The Documentalist", descRu: "Чертежи, спецификации, договоры. Читает технические документы, структурирует и создаёт документацию.", descEn: "Technical drawings, specs, contracts. Reads, structures, and generates documentation." },
-                { icon: <IconBar />, ru: "Аналитик", en: "The Analyst", descRu: "KPI, продажи, операции. Собирает данные из разных систем, строит отчёты, находит аномалии.", descEn: "KPIs, sales, operations. Pulls data from multiple systems, builds reports, flags anomalies." },
-                { icon: <IconChat />, ru: "Коммуникатор", en: "The Communicator", descRu: "Клиенты, партнёры, внутренние запросы. Отвечает на вопросы, маршрутизирует обращения, записывает.", descEn: "Customers, partners, internal requests. Responds, routes, and books appointments." },
-                { icon: <IconBook />, ru: "Куратор знаний", en: "The Knowledge Curator", descRu: "Регламенты, стандарты, база знаний. Онбординг, обучение, ответы на типовые вопросы.", descEn: "Regulations, standards, knowledge base. Onboarding, training, recurring questions." },
-                { icon: <IconNet />, ru: "Интегратор", en: "The Integrator", descRu: "ERP, 1С, CRM, базы данных. Подключает агентов к вашим системам без переписывания инфраструктуры.", descEn: "ERP, 1C, CRM, databases. Connects agents to your systems without rewriting infrastructure." },
+                { icon: <IconDoc />, ru: "Документалист", en: "The Documentalist", et: "Dokumentalist", descRu: "Чертежи, спецификации, договоры. Читает технические документы, структурирует и создаёт документацию.", descEn: "Technical drawings, specs, contracts. Reads, structures, and generates documentation.", descEt: "Joonised, spetsifikatsioonid, lepingud. Loeb tehnilisi dokumente, struktureerib ja koostab dokumentatsiooni." },
+                { icon: <IconBar />, ru: "Аналитик", en: "The Analyst", et: "Analüütik", descRu: "KPI, продажи, операции. Собирает данные из разных систем, строит отчёты, находит аномалии.", descEn: "KPIs, sales, operations. Pulls data from multiple systems, builds reports, flags anomalies.", descEt: "KPI-d, müük, operatsioonid. Kogub andmeid eri süsteemidest, koostab aruandeid, leiab anomaaliaid." },
+                { icon: <IconChat />, ru: "Коммуникатор", en: "The Communicator", et: "Kommunikaator", descRu: "Клиенты, партнёры, внутренние запросы. Отвечает на вопросы, маршрутизирует обращения, записывает.", descEn: "Customers, partners, internal requests. Responds, routes, and books appointments.", descEt: "Kliendid, partnerid, sisepäringud. Vastab küsimustele, suunab pöördumisi, broneerib aegu." },
+                { icon: <IconBook />, ru: "Куратор знаний", en: "The Knowledge Curator", et: "Teadmiste kuraator", descRu: "Регламенты, стандарты, база знаний. Онбординг, обучение, ответы на типовые вопросы.", descEn: "Regulations, standards, knowledge base. Onboarding, training, recurring questions.", descEt: "Juhendid, standardid, teadmusbaas. Sisseelamine, koolitus, vastused korduvatele küsimustele." },
+                { icon: <IconNet />, ru: "Интегратор", en: "The Integrator", et: "Integraator", descRu: "ERP, 1С, CRM, базы данных. Подключает агентов к вашим системам без переписывания инфраструктуры.", descEn: "ERP, 1C, CRM, databases. Connects agents to your systems without rewriting infrastructure.", descEt: "ERP, 1C, CRM, andmebaasid. Ühendab agendid teie süsteemidega ilma taristut ümber kirjutamata." },
               ].map((agent, i) => (
                 <div key={i}>
                   <div className="mb-3">{agent.icon}</div>
-                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal">{ru ? agent.ru : agent.en}</span>
-                  <p className="text-sm text-gray-600 mt-3">{ru ? agent.descRu : agent.descEn}</p>
+                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal">{et ? agent.et : ru ? agent.ru : agent.en}</span>
+                  <p className="text-sm text-gray-600 mt-3">{et ? agent.descEt : ru ? agent.descRu : agent.descEn}</p>
                 </div>
               ))}
             </div>
@@ -553,47 +566,53 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {ru ? "Кейсы" : "Case studies"}
+              {et ? "Juhtumid" : ru ? "Кейсы" : "Case studies"}
             </h2>
             <div className="flex flex-col lg:flex-row gap-x-6">
               {[
                 {
                   icon: <IconCalendar />,
-                  labelRu: "Салон красоты", labelEn: "Beauty salon",
+                  labelRu: "Салон красоты", labelEn: "Beauty salon", labelEt: "Ilusalong",
                   problemRu: "Администратор записывал клиентов вручную — конфликты расписания, пропущенные звонки, работа только в рабочее время.",
                   problemEn: "The administrator booked clients manually — scheduling conflicts, missed calls, no service outside business hours.",
+                  problemEt: "Administraator broneeris kliente käsitsi — graafikukonfliktid, vastamata kõned, teenindus ainult tööajal.",
                   resultRu: "AI-агент в Telegram принимает записи на естественном языке, синхронизирует с расписанием и 1С. Запись работает 24/7.",
                   resultEn: "A Telegram agent accepts bookings in natural language, syncs with schedule and 1C. Bookings run 24/7.",
+                  resultEt: "AI-agent Telegramis võtab broneeringuid vastu loomulikus keeles ning sünkroniseerib graafiku ja 1C-ga. Broneerimine töötab 24/7.",
                   href: null,
                 },
                 {
                   icon: <IconFactory />,
-                  labelRu: "Производство · Фабрика Аэрозолей", labelEn: "Manufacturing · Aerosol Factory",
+                  labelRu: "Производство · Фабрика Аэрозолей", labelEn: "Manufacturing · Aerosol Factory", labelEt: "Tootmine · Aerosoolitehas",
                   problemRu: "Планировщик тратил часы на сбор данных из разных систем: склад, заказы, каталог — прежде чем принять одно решение о запуске партии.",
                   problemEn: "The planner spent hours gathering data from different systems: inventory, orders, catalog — before making a single production decision.",
+                  problemEt: "Planeerija kulutas tunde andmete kogumisele eri süsteemidest: ladu, tellimused, kataloog — enne kui sai teha ühe tootmisotsuse.",
                   resultRu: "AI-агент в Telegram запрашивает данные и выдаёт рекомендацию по объёму производства за секунды.",
                   resultEn: "An AI agent in Telegram queries data and delivers a production volume recommendation in seconds.",
+                  resultEt: "AI-agent Telegramis pärib andmed ja annab tootmismahu soovituse sekunditega.",
                   href: "/cases/aerosol-factory",
                 },
                 {
                   icon: <IconPeople />,
-                  labelRu: "Корпоративный клиент", labelEn: "Enterprise",
+                  labelRu: "Корпоративный клиент", labelEn: "Enterprise", labelEt: "Suurklient",
                   problemRu: "Новые сотрудники тратили недели на онбординг: регламенты разрознены, нет единого источника ответов.",
                   problemEn: "New employees spent weeks onboarding: policies scattered, no single source of truth.",
+                  problemEt: "Uued töötajad kulutasid sisseelamisele nädalaid: juhendid laiali, ühtset vastuste allikat pole.",
                   resultRu: "Агент-куратор знаний отвечает на вопросы по регламентам и проводит по процессам. Онбординг сократился с недель до дней.",
                   resultEn: "A knowledge agent answers policy questions and guides through processes. Onboarding reduced from weeks to days.",
+                  resultEt: "Teadmiste kuraator vastab juhendite kohta käivatele küsimustele ja juhatab protsessides. Sisseelamine lühenes nädalatelt päevadele.",
                   href: null,
                 },
               ].map((item, i) => (
                 <div key={i} className="w-full lg:w-1/3 max-lg:mb-12">
                   <div className="flex flex-col">
                     <div className="mb-3">{item.icon}</div>
-                    <span className="text-xs font-mono text-gray-400 uppercase">{ru ? item.labelRu : item.labelEn}</span>
-                    <p className="text-[1.2rem] lg:text-[1.68rem] font-light mt-3">{ru ? item.problemRu : item.problemEn}</p>
-                    <p className="text-sm text-gray-600 mt-3">{ru ? item.resultRu : item.resultEn}</p>
+                    <span className="text-xs font-mono text-gray-400 uppercase">{et ? item.labelEt : ru ? item.labelRu : item.labelEn}</span>
+                    <p className="text-[1.2rem] lg:text-[1.68rem] font-light mt-3">{et ? item.problemEt : ru ? item.problemRu : item.problemEn}</p>
+                    <p className="text-sm text-gray-600 mt-3">{et ? item.resultEt : ru ? item.resultRu : item.resultEn}</p>
                     {item.href && (
                       <a href={item.href} className="text-sm font-mono mt-4 font-normal">
-                        {ru ? "Читать кейс →" : "Read case →"}
+                        {et ? "Loe juhtumit →" : ru ? "Читать кейс →" : "Read case →"}
                       </a>
                     )}
                   </div>
@@ -609,18 +628,18 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {ru ? "Ваши данные не покидают компанию" : "Your data stays inside"}
+              {et ? "Teie andmed ei lahku ettevõttest" : ru ? "Ваши данные не покидают компанию" : "Your data stays inside"}
             </h2>
             <SecuritySvg lang={lang} />
             <div className="flex flex-col lg:flex-row gap-x-6 mt-6">
               {[
-                { ru: "Локальный деплой", en: "Local deployment", descRu: "Данные остаются на серверах клиента — никакого внешнего облака", descEn: "Data stays on your servers — no external cloud" },
-                { ru: "Открытые модели", en: "Open-source models", descRu: "DeepSeek, Llama, Qwen — независимость от зарубежных провайдеров", descEn: "DeepSeek, Llama, Qwen — no dependency on foreign providers" },
-                { ru: "ФЗ-152", en: "Data compliance", descRu: "Соответствие российскому законодательству о персональных данных", descEn: "Compliant with data protection law" },
+                { ru: "Локальный деплой", en: "Local deployment", et: "Lokaalne juurutus", descRu: "Данные остаются на серверах клиента — никакого внешнего облака", descEn: "Data stays on your servers — no external cloud", descEt: "Andmed jäävad kliendi serveritesse — mingit välist pilve pole" },
+                { ru: "Открытые модели", en: "Open-source models", et: "Avatud mudelid", descRu: "DeepSeek, Llama, Qwen — независимость от зарубежных провайдеров", descEn: "DeepSeek, Llama, Qwen — no dependency on foreign providers", descEt: "DeepSeek, Llama, Qwen — sõltumatus välistest pakkujatest" },
+                { ru: "ФЗ-152", en: "Data compliance", et: "Andmekaitse", descRu: "Соответствие российскому законодательству о персональных данных", descEn: "Compliant with data protection law", descEt: "Vastavus andmekaitsenõuetele" },
               ].map((item, i) => (
                 <div key={i} className="w-full lg:w-1/3 max-lg:mb-12">
-                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal">{ru ? item.ru : item.en}</span>
-                  <p className="text-sm text-gray-600 mt-3">{ru ? item.descRu : item.descEn}</p>
+                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal">{et ? item.et : ru ? item.ru : item.en}</span>
+                  <p className="text-sm text-gray-600 mt-3">{et ? item.descEt : ru ? item.descRu : item.descEn}</p>
                 </div>
               ))}
             </div>
@@ -633,20 +652,20 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {ru ? "Как мы работаем" : "How we work"}
+              {et ? "Kuidas me töötame" : ru ? "Как мы работаем" : "How we work"}
             </h2>
             <ProcessSvg lang={lang} />
             <div className="flex flex-col lg:flex-row gap-x-6 mt-4">
               {[
-                { ru: "Аудит", en: "Audit", descRu: "Изучаем процессы, находим точки автоматизации", descEn: "We study your processes and find automation opportunities" },
-                { ru: "Пилот", en: "Pilot", descRu: "Быстрый MVP на одном процессе — 2–4 недели", descEn: "A quick MVP on one process — 2–4 weeks" },
-                { ru: "Интеграция", en: "Integration", descRu: "Подключение к системам клиента", descEn: "Connecting to your existing systems" },
-                { ru: "Масштаб", en: "Scale", descRu: "Расширение на другие процессы", descEn: "Expanding to other processes" },
+                { ru: "Аудит", en: "Audit", et: "Audit", descRu: "Изучаем процессы, находим точки автоматизации", descEn: "We study your processes and find automation opportunities", descEt: "Uurime protsesse ja leiame automatiseerimise kohad" },
+                { ru: "Пилот", en: "Pilot", et: "Piloot", descRu: "Быстрый MVP на одном процессе — 2–4 недели", descEn: "A quick MVP on one process — 2–4 weeks", descEt: "Kiire MVP ühel protsessil — 2–4 nädalat" },
+                { ru: "Интеграция", en: "Integration", et: "Integratsioon", descRu: "Подключение к системам клиента", descEn: "Connecting to your existing systems", descEt: "Ühendamine kliendi süsteemidega" },
+                { ru: "Масштаб", en: "Scale", et: "Skaleerimine", descRu: "Расширение на другие процессы", descEn: "Expanding to other processes", descEt: "Laienemine teistele protsessidele" },
               ].map((step, i) => (
                 <div key={i} className="w-full lg:w-1/4 max-lg:mb-12">
                   <span className="font-mono text-gray-400 text-sm">{`0${i + 1}`}</span>
-                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal"> {ru ? step.ru : step.en}</span>
-                  <p className="text-sm text-gray-600 mt-3">{ru ? step.descRu : step.descEn}</p>
+                  <span className="text-[1.2rem] lg:text-[1.68rem] font-normal"> {et ? step.et : ru ? step.ru : step.en}</span>
+                  <p className="text-sm text-gray-600 mt-3">{et ? step.descEt : ru ? step.descRu : step.descEn}</p>
                 </div>
               ))}
             </div>
@@ -659,13 +678,17 @@ export default function AI() {
         <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
           <section className="py-20 max-lg:py-16 max-sm:py-12">
             <h2 className="tracking-tight mb-8">
-              {ru
+              {et
+                ? "Leiame üles, kuhu teie aeg kaob"
+                : ru
                 ? "Давайте найдём, где у вас теряется время"
-                : "Let\u2019s find where your time goes"}
+                : "Let’s find where your time goes"}
             </h2>
             <div className="lg:w-1/2">
               <p className="text-[1.2rem] lg:text-[1.68rem] font-normal">
-                {ru
+                {et
+                  ? <><a href={`${p}/contact`} className="ajax-link">Kirjutage meile</a> — arutame teie protsessi ja näitame, kuidas agent saab aidata.</>
+                  : ru
                   ? <><a href={`${p}/contact`} className="ajax-link">Напишите нам</a> — обсудим ваш процесс и покажем, как агент может помочь.</>
                   : <><a href={`${p}/contact`} className="ajax-link">Get in touch</a> — we&apos;ll discuss your process and show how an agent can help.</>}
               </p>

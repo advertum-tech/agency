@@ -4,11 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/app/context/LanguageContext";
+import LangToggle from "@/app/context/LangToggle";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const lang = useLang();
-  const p = lang === "ru" ? "/ru" : "";
+  const p = lang === "et" ? "/et" : lang === "ru" ? "/ru" : "";
 
   return (
     <div className="relative h-14 sm:h-16 z-[998]">
@@ -39,9 +40,10 @@ export default function Nav() {
               </div>
               <div className="min-[993px]:w-1/2">
                 <ul className="hidden min-[993px]:flex items-center">
-                  <li><Link href={`${p}/ai`} className="inline p-0 text-main border-b border-main/25 hover:border-main/50 hover:bg-transparent">{lang === "ru" ? "Агенты" : "Agents"}</Link></li>
-                  <li className="ml-8"><Link href={`${p}/journal`} className="inline p-0 text-main border-b border-main/25 hover:border-main/50 hover:bg-transparent">{lang === "ru" ? "Журнал" : "Journal"}</Link></li>
-                  <li className="ml-8"><Link href={`${p}/about`} className="inline p-0 text-main border-b border-main/25 hover:border-main/50 hover:bg-transparent">{lang === "ru" ? "О нас" : "About"}</Link></li>
+                  <li><Link href={`${p}/ai`} className="inline p-0 text-main border-b border-main/25 hover:border-main/50 hover:bg-transparent">{lang === "et" ? "Agendid" : lang === "ru" ? "Агенты" : "Agents"}</Link></li>
+                  <li className="ml-8"><Link href={`${p}/journal`} className="inline p-0 text-main border-b border-main/25 hover:border-main/50 hover:bg-transparent">{lang === "et" ? "Ajakiri" : lang === "ru" ? "Журнал" : "Journal"}</Link></li>
+                  <li className="ml-8"><Link href={`${p}/about`} className="inline p-0 text-main border-b border-main/25 hover:border-main/50 hover:bg-transparent">{lang === "et" ? "Meist" : lang === "ru" ? "О нас" : "About"}</Link></li>
+                  <li className="ml-8"><LangToggle /></li>
                 </ul>
                 {open && (
                   <div
@@ -66,9 +68,10 @@ export default function Nav() {
                       Advertum
                     </Link>
                   </li>
-                  <li><Link href={`${p}/ai`} onClick={() => setOpen(false)} className="font-normal flex items-center h-20 px-8 text-main border-b border-main/25 hover:bg-black/5">{lang === "ru" ? "Агенты" : "Agents"}</Link></li>
-                  <li><Link href={`${p}/journal`} onClick={() => setOpen(false)} className="font-normal flex items-center h-20 px-8 text-main border-b border-main/25 hover:bg-black/5">{lang === "ru" ? "Журнал" : "Journal"}</Link></li>
-                  <li><Link href={`${p}/about`} onClick={() => setOpen(false)} className="font-normal flex items-center h-20 px-8 text-main border-b border-main/25 hover:bg-black/5">{lang === "ru" ? "О нас" : "About"}</Link></li>
+                  <li><Link href={`${p}/ai`} onClick={() => setOpen(false)} className="font-normal flex items-center h-20 px-8 text-main border-b border-main/25 hover:bg-black/5">{lang === "et" ? "Agendid" : lang === "ru" ? "Агенты" : "Agents"}</Link></li>
+                  <li><Link href={`${p}/journal`} onClick={() => setOpen(false)} className="font-normal flex items-center h-20 px-8 text-main border-b border-main/25 hover:bg-black/5">{lang === "et" ? "Ajakiri" : lang === "ru" ? "Журнал" : "Journal"}</Link></li>
+                  <li><Link href={`${p}/about`} onClick={() => setOpen(false)} className="font-normal flex items-center h-20 px-8 text-main border-b border-main/25 hover:bg-black/5">{lang === "et" ? "Meist" : lang === "ru" ? "О нас" : "About"}</Link></li>
+                  <li className="flex items-center h-20 px-8 border-b border-main/25"><LangToggle /></li>
                 </ul>
               </div>
             </div>

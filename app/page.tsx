@@ -6,7 +6,7 @@ import InlineContactForm from "@/app/components/InlineContactForm";
 
 export default function Home() {
   const lang = useLang();
-  const p = lang === "ru" ? "/ru" : "";
+  const p = lang === "et" ? "/et" : lang === "ru" ? "/ru" : "";
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
@@ -21,13 +21,17 @@ export default function Home() {
                   'w-full lg:w-2/3 ' +
                   'text-[45px] lg:text-[70px] ' +
                   'tracking-tight'}>
-                {lang === 'ru'
+                {lang === 'et'
+                  ? 'Parandame teie ettevõtte kvaliteeti ja tulemuslikkust'
+                  : lang === 'ru'
                   ? 'Улучшаем качество и эффективность вашего бизнеса'
                   : 'Improve the quality and performance of your business'}
               </h1>
               <div className="w-full lg:w-1/2 lg:ml-auto">
                 <p className="absolute lg:relative top-2/3 md:top-3/4 lg:top-0 lg:text-[1.68rem] text-main font-normal my-5 leading-normal">
-                  {lang === 'ru'
+                  {lang === 'et'
+                    ? 'Advertum on arendus- ja automatiseerimisstuudio. Viime AI-agendid äriprotsessidesse ja loome tooteid, mis töötavad.'
+                    : lang === 'ru'
                     ? 'Advertum — студия автоматизации и разработки. Мы внедряем AI-агентов в бизнес-процессы и создаём продукты, которые работают.'
                     : 'Advertum is a development and automation studio. We put AI agents into business operations and build products that work.'}
                 </p>
@@ -43,23 +47,23 @@ export default function Home() {
               {([
                 {
                   n: '2',
-                  unit: lang === 'ru' ? 'часа' : 'hours',
-                  label: lang === 'ru' ? 'в день экономит агент\nпланировщика на заводе' : 'a day saved by\na planning agent',
+                  unit: lang === 'et' ? 'tundi' : lang === 'ru' ? 'часа' : 'hours',
+                  label: lang === 'et' ? 'päevas säästab tehase\nplaneerimisagent' : lang === 'ru' ? 'в день экономит агент\nпланировщика на заводе' : 'a day saved by\na planning agent',
                 },
                 {
                   n: '14',
-                  unit: lang === 'ru' ? 'дней' : 'days',
-                  label: lang === 'ru' ? 'от брифа до\nпервого рабочего агента' : 'from brief to\nfirst working agent',
+                  unit: lang === 'et' ? 'päeva' : lang === 'ru' ? 'дней' : 'days',
+                  label: lang === 'et' ? 'briifist esimese\ntöötava agendini' : lang === 'ru' ? 'от брифа до\nпервого рабочего агента' : 'from brief to\nfirst working agent',
                 },
                 {
                   n: '100+',
                   unit: '',
-                  label: lang === 'ru' ? 'интеграций\nс бизнес-системами' : 'integrations\nwith business systems',
+                  label: lang === 'et' ? 'integratsiooni\närisüsteemidega' : lang === 'ru' ? 'интеграций\nс бизнес-системами' : 'integrations\nwith business systems',
                 },
                 {
                   n: '24/7',
                   unit: '',
-                  label: lang === 'ru' ? 'агент работает\nбез выходных и обедов' : 'agents run without\nbreaks or weekends',
+                  label: lang === 'et' ? 'agent töötab ilma\npuhkepäevade ja lõunata' : lang === 'ru' ? 'агент работает\nбез выходных и обедов' : 'agents run without\nbreaks or weekends',
                 },
               ] as { n: string; unit: string; label: string }[]).map(({ n, unit, label }) => (
                 <div key={n}>
@@ -78,7 +82,7 @@ export default function Home() {
         <div className={'bg-white text-main'}>
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
-              <h2 className={'tracking-tight mb-8'}>Journal</h2>
+              <h2 className={'tracking-tight mb-8'}>{lang === 'et' ? 'Ajakiri' : 'Journal'}</h2>
               <div className="flex flex-col lg:flex-row gap-x-6">
                 <div className="w-full lg:w-1/2 max-lg:mb-12">
                   <a href={`${p}/great-displacement`} className="border-b-0">
@@ -101,22 +105,24 @@ export default function Home() {
                         <line key={`d${i}`} x1={x} y1={y1} x2={x} y2={y2} stroke="#c00" strokeWidth="1" strokeDasharray="3 3" />
                       ))}
                       <text x="50" y="30" fontSize="13" fontFamily="monospace" fill="#999">
-                        {lang === 'ru' ? 'умственный труд → дешевеет' : 'cognitive labor → cheap'}
+                        {lang === 'et' ? 'vaimne töö → odavneb' : lang === 'ru' ? 'умственный труд → дешевеет' : 'cognitive labor → cheap'}
                       </text>
                       <text x="400" y="380" fontSize="13" fontFamily="monospace" fill="#999">
-                        {lang === 'ru' ? 'физический труд → в дефиците' : 'physical labor → scarce'}
+                        {lang === 'et' ? 'füüsiline töö → napib' : lang === 'ru' ? 'физический труд → в дефиците' : 'physical labor → scarce'}
                       </text>
                     </svg>
                   </a>
                   <div className="meta">
                     <time dateTime="2026-02-01">02/2026</time>
-                    <span>&nbsp;· {lang === 'ru' ? 'Мнение · Лонгрид' : 'Opinion · Essay'}</span>
+                    <span>&nbsp;· {lang === 'et' ? 'Arvamus · Essee' : lang === 'ru' ? 'Мнение · Лонгрид' : 'Opinion · Essay'}</span>
                   </div>
                   <a href={`${p}/great-displacement`} className="text-[1.2rem] lg:text-[1.68rem] font-normal">
-                    {lang === 'ru' ? 'Великое вытеснение' : 'The Great Displacement'}
+                    {lang === 'et' ? 'Suur väljatõrjumine' : lang === 'ru' ? 'Великое вытеснение' : 'The Great Displacement'}
                   </a>
                   <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                    {lang === 'ru'
+                    {lang === 'et'
+                      ? 'AI muudab vaimse töö odavaks kiiremini, kui jõuame ümber õppida.'
+                      : lang === 'ru'
                       ? 'ИИ обесценивает умственный труд быстрее, чем мы успеваем переучиться.'
                       : "AI is devaluing cognitive labor faster than we can retrain."}
                   </p>
@@ -157,13 +163,15 @@ export default function Home() {
                   </a>
                   <div className="meta">
                     <time dateTime="2026-02-11">02/2026</time>
-                    <span>&nbsp;· {lang === 'ru' ? 'Инженерия · Перевод' : 'Engineering · Translation'}</span>
+                    <span>&nbsp;· {lang === 'et' ? 'Inseneeria · Tõlge' : lang === 'ru' ? 'Инженерия · Перевод' : 'Engineering · Translation'}</span>
                   </div>
                   <a href={`${p}/harness-engineering`} className="text-[1.2rem] lg:text-[1.68rem] font-normal">
-                    {lang === 'ru' ? 'Harness-инженерия' : 'Harness Engineering'}
+                    {lang === 'et' ? 'Harness-inseneeria' : lang === 'ru' ? 'Harness-инженерия' : 'Harness Engineering'}
                   </a>
                   <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                    {lang === 'ru'
+                    {lang === 'et'
+                      ? 'Kolm inseneri, Codex ja miljon rida koodi. Mitte ükski pole käsitsi kirjutatud.'
+                      : lang === 'ru'
                       ? 'Три инженера, Codex и миллион строк кода. Ни одной написанной вручную.'
                       : 'Three engineers, Codex, and a million lines of code. None written by hand.'}
                   </p>
@@ -178,7 +186,7 @@ export default function Home() {
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
               <h2 className={'tracking-tight mb-8'}>
-                {lang === 'ru' ? 'Последние проекты' : 'Latest projects'}
+                {lang === 'et' ? 'Viimased projektid' : lang === 'ru' ? 'Последние проекты' : 'Latest projects'}
               </h2>
               <div className="flex flex-col lg:flex-row gap-x-6">
                 {/* Aerosol Factory card */}
@@ -195,20 +203,24 @@ export default function Home() {
                       </svg>
                     </div>
                     <span className="text-xs font-mono text-gray-400 uppercase">
-                      {lang === 'ru' ? 'Производство · Фабрика Аэрозолей' : 'Manufacturing · Aerosol Factory'}
+                      {lang === 'et' ? 'Tootmine · Aerosoolitehas' : lang === 'ru' ? 'Производство · Фабрика Аэрозолей' : 'Manufacturing · Aerosol Factory'}
                     </span>
                     <p className="text-[1.2rem] lg:text-[1.68rem] font-light mt-3">
-                      {lang === 'ru'
+                      {lang === 'et'
+                        ? 'Planeerija kulutas tunde andmete kogumisele eri süsteemidest (ladu, tellimused, kataloog), enne kui sai teha ühe tootmisotsuse.'
+                        : lang === 'ru'
                         ? 'Планировщик тратил часы на сбор данных из разных систем (склад, заказы, каталог), прежде чем принять одно решение о запуске партии.'
                         : 'The planner spent hours gathering data from different systems (inventory, orders, catalog) before making a single production decision.'}
                     </p>
                     <p className="text-sm text-gray-600 mt-3">
-                      {lang === 'ru'
+                      {lang === 'et'
+                        ? 'AI-agent Telegramis pärib andmed ja annab tootmismahu soovituse sekunditega.'
+                        : lang === 'ru'
                         ? 'AI-агент в Telegram запрашивает данные и выдаёт рекомендацию по объёму производства за секунды.'
                         : 'An AI agent in Telegram pulls the data and gives a production recommendation in seconds.'}
                     </p>
                     <a href={`${p}/cases/aerosol-factory`} className="text-sm font-mono mt-4 font-normal">
-                      {lang === 'ru' ? 'Читать кейс →' : 'Read case →'}
+                      {lang === 'et' ? 'Loe juhtumit →' : lang === 'ru' ? 'Читать кейс →' : 'Read case →'}
                     </a>
                   </div>
                 </div>
@@ -230,15 +242,19 @@ export default function Home() {
                       </svg>
                     </div>
                     <span className="text-xs font-mono text-gray-400 uppercase">
-                      {lang === 'ru' ? 'Салон красоты' : 'Beauty salon'}
+                      {lang === 'et' ? 'Ilusalong' : lang === 'ru' ? 'Салон красоты' : 'Beauty salon'}
                     </span>
                     <p className="text-[1.2rem] lg:text-[1.68rem] font-light mt-3">
-                      {lang === 'ru'
+                      {lang === 'et'
+                        ? 'Administraator broneeris kliente käsitsi: graafikukonfliktid, vastamata kõned, teenindus ainult tööajal.'
+                        : lang === 'ru'
                         ? 'Администратор записывал клиентов вручную: конфликты расписания, пропущенные звонки, работа только в рабочее время.'
                         : 'The administrator booked clients manually: scheduling conflicts, missed calls, no service outside business hours.'}
                     </p>
                     <p className="text-sm text-gray-600 mt-3">
-                      {lang === 'ru'
+                      {lang === 'et'
+                        ? 'AI-agent Telegramis võtab broneeringuid vastu loomulikus keeles ning sünkroniseerib graafiku ja 1C-ga. Broneerimine töötab 24/7.'
+                        : lang === 'ru'
                         ? 'AI-агент в Telegram принимает записи на естественном языке, синхронизирует с расписанием и 1С. Запись работает 24/7.'
                         : 'A Telegram agent accepts bookings in natural language, syncs with schedule and 1C. Bookings run 24/7.'}
                     </p>
@@ -254,27 +270,31 @@ export default function Home() {
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
               <h2 className={'tracking-tight mb-8'}>
-                {lang === 'ru' ? 'Клиенты говорят' : 'What clients say'}
+                {lang === 'et' ? 'Mida kliendid ütlevad' : lang === 'ru' ? 'Клиенты говорят' : 'What clients say'}
               </h2>
               <div className="flex flex-col lg:flex-row gap-6">
                 <div className="w-full lg:w-1/2 border border-main/10 p-8">
                   <p className="text-[1.1rem] lg:text-[1.4rem] font-light leading-relaxed mb-6">
-                    {lang === 'ru'
+                    {lang === 'et'
+                      ? '„Agent teeb sekunditega seda, millele planeerija kulutas iga päev tunde. Tasus end ära esimese kuuga."'
+                      : lang === 'ru'
                       ? '«Агент делает за секунды то, на что планировщик тратил несколько часов каждый день. Окупилось за первый месяц.»'
                       : '"The agent does in seconds what the planner used to spend hours on every single day. It paid for itself in the first month."'}
                   </p>
                   <div className="text-xs font-mono text-gray-400 uppercase tracking-widest">
-                    {lang === 'ru' ? 'Фабрика Аэрозолей · Директор по производству' : 'Aerosol Factory · Production Director'}
+                    {lang === 'et' ? 'Aerosoolitehas · Tootmisjuht' : lang === 'ru' ? 'Фабрика Аэрозолей · Директор по производству' : 'Aerosol Factory · Production Director'}
                   </div>
                 </div>
                 <div className="w-full lg:w-1/2 border border-main/10 p-8">
                   <p className="text-[1.1rem] lg:text-[1.4rem] font-light leading-relaxed mb-6">
-                    {lang === 'ru'
+                    {lang === 'et'
+                      ? '„Kliendid kirjutavad kell kaks öösel ja saavad kinnituse kohe. Varem tähendas see hommikul vastamata kõnet."'
+                      : lang === 'ru'
                       ? '«Клиенты пишут в два часа ночи и получают подтверждение немедленно. Раньше это означало пропущенный звонок утром.»'
                       : '"Clients write at 2 AM and get confirmation immediately. Before, that meant a missed call in the morning."'}
                   </p>
                   <div className="text-xs font-mono text-gray-400 uppercase tracking-widest">
-                    {lang === 'ru' ? 'Салон красоты · Владелец' : 'Beauty Salon · Owner'}
+                    {lang === 'et' ? 'Ilusalong · Omanik' : lang === 'ru' ? 'Салон красоты · Владелец' : 'Beauty Salon · Owner'}
                   </div>
                 </div>
               </div>
@@ -287,35 +307,43 @@ export default function Home() {
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
               <h2 className={'tracking-tight mb-8'}>
-                {lang === 'ru' ? 'Как мы работаем' : 'How we work'}
+                {lang === 'et' ? 'Kuidas me töötame' : lang === 'ru' ? 'Как мы работаем' : 'How we work'}
               </h2>
               <div className="flex flex-col lg:flex-row gap-x-6">
                 {([
                   {
                     n: '01',
-                    title: lang === 'ru' ? 'Бриф' : 'Brief',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'Briif' : lang === 'ru' ? 'Бриф' : 'Brief',
+                    body: lang === 'et'
+                      ? 'Üks kohtumine. Saame ülesandest aru, näitame, mis on võimalik, ütleme tähtajad ja hinna.'
+                      : lang === 'ru'
                       ? 'Одна встреча: разбираемся в задаче, показываем что возможно, называем сроки и стоимость.'
                       : 'One meeting. We understand your task, show what\'s possible, give you timelines and cost.',
                   },
                   {
                     n: '02',
-                    title: lang === 'ru' ? 'Прототип' : 'Prototype',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'Prototüüp' : lang === 'ru' ? 'Прототип' : 'Prototype',
+                    body: lang === 'et'
+                      ? 'Esimene töötav agent või prototüüp 2 nädalaga. Katsute seda ise, mitte ei vaata esitlust.'
+                      : lang === 'ru'
                       ? 'Первый рабочий агент или прототип через 2 недели. Вы трогаете руками, не читаете презентацию.'
                       : 'First working agent or prototype in 2 weeks. You see and test it, not sit through a presentation.',
                   },
                   {
                     n: '03',
-                    title: lang === 'ru' ? 'Запуск' : 'Launch',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'Käivitus' : lang === 'ru' ? 'Запуск' : 'Launch',
+                    body: lang === 'et'
+                      ? 'Juurutame teie taristus ja ühendame teie süsteemidega. Andmed jäävad ettevõttesse.'
+                      : lang === 'ru'
                       ? 'Разворачиваем в вашей инфраструктуре, подключаем к системам. Данные не покидают компанию.'
                       : 'We deploy in your infrastructure and connect to your systems. Your data stays inside.',
                   },
                   {
                     n: '04',
-                    title: lang === 'ru' ? 'Поддержка' : 'Support',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'Tugi' : lang === 'ru' ? 'Поддержка' : 'Support',
+                    body: lang === 'et'
+                      ? 'Oleme olemas ka pärast käivitust ja täiustame süsteemi päris andmete põhjal.'
+                      : lang === 'ru'
                       ? 'Остаёмся после запуска. Дорабатываем по мере работы с реальными данными.'
                       : 'We stay after launch and iterate as the system meets real-world data.',
                   },
@@ -336,7 +364,7 @@ export default function Home() {
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
               <h2 className={'tracking-tight mb-8'}>
-                {lang === 'ru' ? 'Что мы делаем' : 'What we do'}
+                {lang === 'et' ? 'Mida me teeme' : lang === 'ru' ? 'Что мы делаем' : 'What we do'}
               </h2>
               <div className="flex flex-col lg:flex-row gap-x-6 mb-12">
                 {([
@@ -348,8 +376,10 @@ export default function Home() {
                         <path d="M7.8 7.8 L10.6 10.6 M21.4 21.4 L24.2 24.2 M7.8 24.2 L10.6 21.4 M21.4 10.6 L24.2 7.8" strokeLinecap="round" />
                       </svg>
                     ),
-                    title: lang === 'ru' ? 'AI-агенты' : 'AI agents',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'AI-agendid' : lang === 'ru' ? 'AI-агенты' : 'AI agents',
+                    body: lang === 'et'
+                      ? 'Viime agendid äriprotsessidesse. Töötavad Telegrami, 1C, CRM-i ja ERP-iga. Andmed jäävad teie serveritesse.'
+                      : lang === 'ru'
                       ? 'Внедряем агентов в бизнес-процессы. Работают в Telegram, 1С, CRM, ERP. Данные не покидают компанию.'
                       : 'We put AI agents into your operations. They work with Telegram, 1C, CRM, ERP. Data stays on your servers.',
                   },
@@ -363,8 +393,10 @@ export default function Home() {
                         <line x1="7" y1="14" x2="18" y2="14" />
                       </svg>
                     ),
-                    title: lang === 'ru' ? 'Сайты и лендинги' : 'Websites & landing pages',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'Veebilehed ja maandumislehed' : lang === 'ru' ? 'Сайты и лендинги' : 'Websites & landing pages',
+                    body: lang === 'et'
+                      ? 'Ettevõtte veebilehed, maandumislehed, promolehed. Kiiresti, ilma liigse koodita, teie domeenil.'
+                      : lang === 'ru'
                       ? 'Разрабатываем корпоративные сайты, лендинги, промо-страницы. Быстро, без лишнего кода, на вашем домене.'
                       : 'Corporate sites, landing pages, promo pages. Fast, clean, on your domain.',
                   },
@@ -381,8 +413,10 @@ export default function Home() {
                         <line x1="14" y1="23" x2="18" y2="23" />
                       </svg>
                     ),
-                    title: lang === 'ru' ? 'Интеграции' : 'Integrations',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'Integratsioonid' : lang === 'ru' ? 'Интеграции' : 'Integrations',
+                    body: lang === 'et'
+                      ? 'Ühendame süsteemid omavahel: 1C, Bitrix, AmoCRM, Telegram, Google Sheets, sisemised andmebaasid.'
+                      : lang === 'ru'
                       ? 'Связываем системы между собой: 1С, Bitrix, AmoCRM, Telegram, Google Sheets, внутренние базы данных.'
                       : 'Connect your systems: 1C, Bitrix, AmoCRM, Telegram, Google Sheets, internal databases.',
                   },
@@ -395,8 +429,10 @@ export default function Home() {
                         <line x1="16" y1="10" x2="16" y2="16" />
                       </svg>
                     ),
-                    title: lang === 'ru' ? 'Продукты с нуля' : 'Products from scratch',
-                    body: lang === 'ru'
+                    title: lang === 'et' ? 'Tooted nullist' : lang === 'ru' ? 'Продукты с нуля' : 'Products from scratch',
+                    body: lang === 'et'
+                      ? 'Ideest MVP-ni 4–8 nädalaga. SaaS, sisetööriistad, mobiilirakendused.'
+                      : lang === 'ru'
                       ? 'От идеи до MVP за 4–8 недель. SaaS, внутренние инструменты, мобильные приложения.'
                       : 'From idea to MVP in 4-8 weeks. SaaS, internal tools, mobile apps.',
                   },
@@ -409,7 +445,7 @@ export default function Home() {
                 ))}
               </div>
               <a href={`${p}/ai`} className="text-[1.2rem] lg:text-[1.68rem] font-normal">
-                {lang === 'ru' ? 'Подробнее об агентах →' : 'Learn more about agents →'}
+                {lang === 'et' ? 'Loe agentide kohta lähemalt →' : lang === 'ru' ? 'Подробнее об агентах →' : 'Learn more about agents →'}
               </a>
             </section>
           </div>
@@ -420,33 +456,33 @@ export default function Home() {
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
               <h2 className={'tracking-tight mb-8'}>
-                {lang === 'ru' ? 'С кем работаем' : 'Who we work with'}
+                {lang === 'et' ? 'Kellega me töötame' : lang === 'ru' ? 'С кем работаем' : 'Who we work with'}
               </h2>
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
                 {([
                   {
-                    title: lang === 'ru' ? 'Производство' : 'Manufacturing',
-                    body: lang === 'ru' ? 'Планирование, складской учёт, диспетчеризация, ЧПУ-интеграции' : 'Production planning, inventory, dispatch, CNC integrations',
+                    title: lang === 'et' ? 'Tootmine' : lang === 'ru' ? 'Производство' : 'Manufacturing',
+                    body: lang === 'et' ? 'Tootmise planeerimine, laoarvestus, dispetšeerimine, CNC-integratsioonid' : lang === 'ru' ? 'Планирование, складской учёт, диспетчеризация, ЧПУ-интеграции' : 'Production planning, inventory, dispatch, CNC integrations',
                   },
                   {
-                    title: lang === 'ru' ? 'Торговля и e-com' : 'Retail & e-commerce',
-                    body: lang === 'ru' ? 'Обработка заказов, ценообразование, работа с поставщиками' : 'Order processing, pricing, supplier communication',
+                    title: lang === 'et' ? 'Kaubandus ja e-pood' : lang === 'ru' ? 'Торговля и e-com' : 'Retail & e-commerce',
+                    body: lang === 'et' ? 'Tellimuste töötlemine, hinnastamine, suhtlus tarnijatega' : lang === 'ru' ? 'Обработка заказов, ценообразование, работа с поставщиками' : 'Order processing, pricing, supplier communication',
                   },
                   {
-                    title: lang === 'ru' ? 'Сервисный бизнес' : 'Service businesses',
-                    body: lang === 'ru' ? 'Запись клиентов, расписание, уведомления, лояльность' : 'Client booking, scheduling, notifications, loyalty',
+                    title: lang === 'et' ? 'Teenindusettevõtted' : lang === 'ru' ? 'Сервисный бизнес' : 'Service businesses',
+                    body: lang === 'et' ? 'Klientide broneerimine, graafikud, teavitused, lojaalsus' : lang === 'ru' ? 'Запись клиентов, расписание, уведомления, лояльность' : 'Client booking, scheduling, notifications, loyalty',
                   },
                   {
-                    title: lang === 'ru' ? 'Финансы и учёт' : 'Finance & accounting',
-                    body: lang === 'ru' ? 'Сверки, отчёты, напоминания, интеграция с банками' : 'Reconciliations, reports, reminders, bank integrations',
+                    title: lang === 'et' ? 'Rahandus ja raamatupidamine' : lang === 'ru' ? 'Финансы и учёт' : 'Finance & accounting',
+                    body: lang === 'et' ? 'Saldovõrdlused, aruanded, meeldetuletused, pangaintegratsioonid' : lang === 'ru' ? 'Сверки, отчёты, напоминания, интеграция с банками' : 'Reconciliations, reports, reminders, bank integrations',
                   },
                   {
-                    title: lang === 'ru' ? 'Логистика' : 'Logistics',
-                    body: lang === 'ru' ? 'Трекинг отправлений, уведомления клиентов, работа с перевозчиками' : 'Shipment tracking, client notifications, carrier management',
+                    title: lang === 'et' ? 'Logistika' : lang === 'ru' ? 'Логистика' : 'Logistics',
+                    body: lang === 'et' ? 'Saadetiste jälgimine, klienditeavitused, töö vedajatega' : lang === 'ru' ? 'Трекинг отправлений, уведомления клиентов, работа с перевозчиками' : 'Shipment tracking, client notifications, carrier management',
                   },
                   {
-                    title: lang === 'ru' ? 'Стартапы и продукты' : 'Startups & products',
-                    body: lang === 'ru' ? 'Быстрый MVP, прод-инфраструктура, масштабирование' : 'Fast MVP, production infrastructure, scaling',
+                    title: lang === 'et' ? 'Idufirmad ja tooted' : lang === 'ru' ? 'Стартапы и продукты' : 'Startups & products',
+                    body: lang === 'et' ? 'Kiire MVP, tootmistaristu, skaleerimine' : lang === 'ru' ? 'Быстрый MVP, прод-инфраструктура, масштабирование' : 'Fast MVP, production infrastructure, scaling',
                   },
                 ] as { title: string; body: string }[]).map(({ title, body }) => (
                   <div key={title}>
@@ -464,10 +500,12 @@ export default function Home() {
           <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
             <section className="py-20 max-lg:py-16 max-sm:py-12">
               <h2 className={'tracking-tight mb-8'}>
-                {lang === 'ru' ? 'Связаться' : 'Get in touch'}
+                {lang === 'et' ? 'Võtke ühendust' : lang === 'ru' ? 'Связаться' : 'Get in touch'}
               </h2>
               <p className="text-[1.2rem] lg:text-[1.68rem] font-normal mb-2">
-                {lang === 'ru'
+                {lang === 'et'
+                  ? 'On teil projekt, idee või soovite lihtsalt rääkida,'
+                  : lang === 'ru'
                   ? 'Есть проект, идея или просто хотите поговорить,'
                   : 'Got a project, an idea, or just want to say hello,'}
               </p>
@@ -475,7 +513,7 @@ export default function Home() {
                 onClick={() => setContactOpen(o => !o)}
                 className="text-[1.2rem] lg:text-[1.68rem] font-normal text-left text-link"
               >
-                {lang === 'ru' ? 'напишите нам' : 'contact us'}
+                {lang === 'et' ? 'kirjutage meile' : lang === 'ru' ? 'напишите нам' : 'contact us'}
                 <span className={`inline-block ml-2 transition-transform duration-500 ${contactOpen ? 'rotate-90' : ''}`}>→</span>
               </button>
               <div className={`grid transition-all duration-500 ease-in-out ${contactOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>

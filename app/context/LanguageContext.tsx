@@ -2,10 +2,13 @@
 
 import { usePathname } from "next/navigation";
 
-export type Lang = "en" | "ru";
+// "ru" kept for the dormant /ru tree — reachable only by direct URL
+export type Lang = "en" | "ru" | "et";
 
-// Derive language from URL: /ru/... → "ru", everything else → "en"
+// Derive language from URL: /et/... → "et", /ru/... → "ru", everything else → "en"
 export function useLang(): Lang {
   const pathname = usePathname();
-  return pathname.startsWith("/ru") ? "ru" : "en";
+  if (pathname.startsWith("/et")) return "et";
+  if (pathname.startsWith("/ru")) return "ru";
+  return "en";
 }

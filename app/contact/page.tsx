@@ -64,40 +64,52 @@ function ContactForm() {
   }
 
   const t = {
-    heading:    lang === "ru" ? "Напишите нам"          : "Get in touch",
-    sub:        lang === "ru"
+    heading:    lang === "et" ? "Kirjutage meile"       : lang === "ru" ? "Напишите нам"          : "Get in touch",
+    sub:        lang === "et"
+      ? "Rääkige oma ülesandest — vastame ühe päeva jooksul."
+      : lang === "ru"
       ? "Расскажите о задаче — ответим в течение дня."
       : "Tell us about your project — we reply within a day.",
-    name:       lang === "ru" ? "Имя"                   : "Name",
+    name:       lang === "et" ? "Nimi"                  : lang === "ru" ? "Имя"                   : "Name",
     email:      "Email",
-    phone:      lang === "ru" ? "Телефон"               : "Phone",
-    comment:    lang === "ru" ? "Комментарий"           : "Message",
-    namePh:     lang === "ru" ? "Иван"                  : "John",
+    phone:      lang === "et" ? "Telefon"               : lang === "ru" ? "Телефон"               : "Phone",
+    comment:    lang === "et" ? "Sõnum"                 : lang === "ru" ? "Комментарий"           : "Message",
+    namePh:     lang === "et" ? "Jaan"                  : lang === "ru" ? "Иван"                  : "John",
     emailPh:    "hello@example.com",
-    phonePh:    lang === "ru" ? "+7 900 000 00 00"      : "+1 800 000 0000",
-    commentPh:  lang === "ru"
+    phonePh:    lang === "et" ? "+372 5000 0000"        : lang === "ru" ? "+7 900 000 00 00"      : "+1 800 000 0000",
+    commentPh:  lang === "et"
+      ? "Rääkige oma protsessist..."
+      : lang === "ru"
       ? "Расскажите о вашем процессе..."
       : "Tell us about your process...",
-    submit:     lang === "ru" ? "Отправить"             : "Send",
-    sending:    lang === "ru" ? "Отправляем..."         : "Sending...",
-    successH:   lang === "ru" ? "Получили, спасибо"     : "Got it, thank you",
-    successT:   lang === "ru"
+    submit:     lang === "et" ? "Saada"                 : lang === "ru" ? "Отправить"             : "Send",
+    sending:    lang === "et" ? "Saadame..."            : lang === "ru" ? "Отправляем..."         : "Sending...",
+    successH:   lang === "et" ? "Kätte saime, aitäh"    : lang === "ru" ? "Получили, спасибо"     : "Got it, thank you",
+    successT:   lang === "et"
+      ? "Vastame ühe päeva jooksul."
+      : lang === "ru"
       ? "Ответим в течение дня."
       : "We'll get back to you within a day.",
-    sendAnother: lang === "ru" ? "Отправить ещё"        : "Send another",
-    err403H:    lang === "ru" ? "Слишком много запросов": "Too many requests",
-    err403T:    lang === "ru"
+    sendAnother: lang === "et" ? "Saada veel"           : lang === "ru" ? "Отправить ещё"        : "Send another",
+    err403H:    lang === "et" ? "Liiga palju päringuid" : lang === "ru" ? "Слишком много запросов": "Too many requests",
+    err403T:    lang === "et"
+      ? "Oodake veidi ja proovige uuesti."
+      : lang === "ru"
       ? "Подождите немного и попробуйте снова."
       : "Please wait a moment and try again.",
-    err500H:    lang === "ru" ? "Ошибка на сервере"     : "Server error",
-    err500T:    lang === "ru"
+    err500H:    lang === "et" ? "Serveri viga"          : lang === "ru" ? "Ошибка на сервере"     : "Server error",
+    err500T:    lang === "et"
+      ? "Midagi läks valesti. Kirjutage meile otse: info@advertum.com"
+      : lang === "ru"
       ? "Что-то пошло не так. Напишите нам напрямую: info@advertum.com"
       : "Something went wrong. Email us directly: info@advertum.com",
-    errNetH:    lang === "ru" ? "Нет соединения"        : "No connection",
-    errNetT:    lang === "ru"
+    errNetH:    lang === "et" ? "Ühendus puudub"        : lang === "ru" ? "Нет соединения"        : "No connection",
+    errNetT:    lang === "et"
+      ? "Kontrollige internetiühendust ja proovige uuesti."
+      : lang === "ru"
       ? "Проверьте интернет и попробуйте снова."
       : "Check your connection and try again.",
-    tryAgain:   lang === "ru" ? "Попробовать снова"     : "Try again",
+    tryAgain:   lang === "et" ? "Proovi uuesti"         : lang === "ru" ? "Попробовать снова"     : "Try again",
   };
 
   const inputClass = [
@@ -218,8 +230,10 @@ export default function Contact() {
   const lang = useLang();
 
   const t = {
-    heading: lang === "ru" ? "Напишите нам" : "Get in touch",
-    sub: lang === "ru"
+    heading: lang === "et" ? "Kirjutage meile" : lang === "ru" ? "Напишите нам" : "Get in touch",
+    sub: lang === "et"
+      ? "Rääkige oma ülesandest — vastame ühe päeva jooksul."
+      : lang === "ru"
       ? "Расскажите о задаче — ответим в течение дня."
       : "Tell us about your project — we reply within a day.",
   };

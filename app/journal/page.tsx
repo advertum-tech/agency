@@ -79,14 +79,14 @@ function HarnessSvg() {
 
 export default function Journal() {
   const lang = useLang();
-  const p = lang === "ru" ? "/ru" : "";
+  const p = lang === "et" ? "/et" : lang === "ru" ? "/ru" : "";
 
   return (
     <div className="bg-white text-main">
       <div className="mx-auto w-[90%] max-w-[1600px] sm:w-4/5">
         <section className="py-20 max-lg:py-16 max-sm:py-12">
           <div className="flex items-center justify-between">
-            <h2 className="tracking-tight">{lang === 'ru' ? 'Журнал' : 'Journal'}</h2>
+            <h2 className="tracking-tight">{lang === 'et' ? 'Ajakiri' : lang === 'ru' ? 'Журнал' : 'Journal'}</h2>
             <LangToggle />
           </div>
           <div className="flex flex-col lg:flex-row gap-x-6">
@@ -98,14 +98,16 @@ export default function Journal() {
                 <time dateTime="2026-02-01">02/2026</time>
                 <span>
                   &nbsp;·{" "}
-                  {lang === "ru" ? "Пост-работа · Манифест" : "Post-work · Manifesto"}
+                  {lang === "et" ? "Tööjärgne ajastu · Manifest" : lang === "ru" ? "Пост-работа · Манифест" : "Post-work · Manifesto"}
                 </span>
               </div>
               <a href={`${p}/great-displacement`} className="text-[1.2rem] lg:text-[1.68rem] font-normal">
-                {lang === "ru" ? "Великое вытеснение" : "The Great Displacement"}
+                {lang === "et" ? "Suur väljatõrjumine" : lang === "ru" ? "Великое вытеснение" : "The Great Displacement"}
               </a>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                {lang === "ru"
+                {lang === "et"
+                  ? "AI muudab vaimse töö odavaks kiiremini, kui jõuame ümber õppida. Kõige napimaks ressursiks saavad käed, mitte pead."
+                  : lang === "ru"
                   ? "ИИ обесценивает умственный труд быстрее, чем мы успеваем переучиться. Самым дефицитным ресурсом станут руки, а не головы."
                   : "AI is devaluing cognitive labor faster than we can retrain. The scarcest resource will be hands, not minds."}
               </p>
@@ -118,16 +120,20 @@ export default function Journal() {
                 <time dateTime="2026-02-11">02/2026</time>
                 <span>
                   &nbsp;·{" "}
-                  {lang === "ru"
+                  {lang === "et"
+                    ? "AI-agendid · Null käsitsi"
+                    : lang === "ru"
                     ? "ИИ-агенты · Ноль вручную"
                     : "AI Agents · Zero Hand-written"}
                 </span>
               </div>
               <a href={`${p}/harness-engineering`} className="text-[1.2rem] lg:text-[1.68rem] font-normal">
-                {lang === "ru" ? "Harness-инженерия" : "Harness Engineering"}
+                {lang === "et" ? "Harness-inseneeria" : lang === "ru" ? "Harness-инженерия" : "Harness Engineering"}
               </a>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                {lang === "ru"
+                {lang === "et"
+                  ? "Kolm inseneri, Codex ja miljon rida koodi — mitte ükski pole käsitsi kirjutatud. OpenAI näitas, milline näeb välja arendus, kui agendid teevad kogu töö."
+                  : lang === "ru"
                   ? "Три инженера, Codex и миллион строк кода — ни одной написанной вручную. OpenAI показала, как выглядит разработка, когда агенты делают всю работу."
                   : "Three engineers, Codex, and a million lines of code — none written by hand. OpenAI showed what development looks like when agents do all the heavy lifting."}
               </p>
